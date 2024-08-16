@@ -23,4 +23,14 @@ add_action( 'wp_enqueue_scripts', 'mainlinks', 5 );//el 5 es la prioridad para n
 
 /*==========================================================================*/
 
+function my_enqueue_scripts() {
+    wp_enqueue_script('my-ajax-script', get_template_directory_uri() . '/js/my-ajax-script.js', array('jquery'), null, true);
+
+    // Localizar la variable ajaxurl para que esté disponible en JavaScript
+    wp_localize_script('my-ajax-script', 'ajax_object', array(
+        'ajaxurl' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+
 ?>
