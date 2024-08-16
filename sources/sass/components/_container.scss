@@ -19,6 +19,9 @@
     &--top{
         margin-top: 2.5rem;
     }
+    &--bottom{
+        margin-bottom: 2.5rem;
+    }
 }
 
 @media(max-width: fun.breakpoints('ipad-big')){

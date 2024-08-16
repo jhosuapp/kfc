@@ -40,11 +40,11 @@
             display: flex;
             justify-content: center;
             img{
-                width: clamp(3rem, 15vh, 7rem);
+                width: clamp(3rem, 10vh, 10vh);
             }
         }
         h1{
-            font-size: clamp(4rem, 7vh, 8rem);
+            font-size: clamp(4rem, 7vh, 7vh);
             text-align: center;
             color: fun.color('bg');
             display: flex;
@@ -52,15 +52,15 @@
             text-transform: uppercase;
             font-weight: 400;
             strong{
-                font-size: clamp(2.2rem, 4vh, 4.25rem);
+                font-size: clamp(2.2rem, 4vh, 4vh);
             }
             em{
-                font-size: clamp(5rem, 9vh, 10rem);
+                font-size: clamp(5rem, 9vh, 9vh);
                 font-style: normal;
                 margin-top: -2.5rem;
             }
             small{
-                font-size: clamp(1.4rem, 2vh, 1.6rem);
+                font-size: clamp(1.4rem, 2vh, 2vh);
                 font-weight: 200;
             }
         }
@@ -69,40 +69,40 @@
         padding-right: 5%;
         text-align: center;
         h2{
-            font-size: clamp(3rem, 5vh, 6rem);
+            font-size: clamp(3rem, 5vh, 5vh);
             font-weight: 400;
             text-transform: uppercase;
         }
         ul{
             list-style: none;
-            font-size: clamp(2.8rem, 4.5vh, 5.5rem);
+            font-size: clamp(2.8rem, 4.5vh, 4.5vh);
             li{
                 position: relative;
                 display: flex;
                 align-items: center;
                 width: fit-content;
                 margin: auto;
-                padding-left: clamp(2.8rem, 4.5vh, 5.5rem);
+                padding-left: clamp(2.8rem, 4.5vh, 4.5vh);
                 &::before{
                     content: "";
                     background-image: url('/wp-content/themes/kfckanding/images/fuego.svg');
-                    background-size: clamp(2.8rem, 4.5vh, 5.5rem);
+                    background-size: clamp(2.8rem, 4.5vh, 4.5vh);
                     position: absolute;
-                    width: clamp(2.8rem, 4.5vh, 5.5rem);
-                    height: clamp(2.8rem, 4.5vh, 5.5rem);
+                    width: clamp(2.8rem, 4.5vh, 4.5vh);
+                    height: clamp(2.8rem, 4.5vh, 4.5vh);
                     left: 0;
                     top: 0.5rem;
                 }
             }
         }
         div{
-            border: 1px dashed fun.color('bg');
+            border: 0.1rem dashed fun.color('bg');
             padding: 2rem;
             margin-top: 10vh;
             border-radius: 2rem;
             p{
                 font-weight: 200;
-                font-size: clamp(1.8rem, 3.5vh, 2rem);
+                font-size: clamp(1.8rem, 3.5vh, 3.5vh);
                 strong{
                     font-weight: 500;
                 }
@@ -151,20 +151,20 @@
             padding-right: 10%;
         }
         ul, h4{
-            font-size: clamp(2.8rem, 2.5vw, 3.2rem);
+            font-size: clamp(2.8rem, 2.5vw, 2.5vw);
         }
         ul{
             list-style: none;
             li{
                 position: relative;
-                padding-left: clamp(2.8rem, 2.5vw, 3.2rem);
+                padding-left: clamp(2.8rem, 2.5vw, 2.5vw);
                 &::before{
                     content: "";
                     background-image: url('/wp-content/themes/kfckanding/images/fuego.svg');
-                    background-size: clamp(2.8rem, 2.5vw, 3.2rem);
+                    background-size: clamp(2.8rem, 2.5vw, 2.5vw);
                     position: absolute;
-                    width: clamp(2.8rem, 2.5vw, 3.2rem);
-                    height: clamp(2.8rem, 2.5vw, 3.2rem);
+                    width: clamp(2.8rem, 2.5vw, 2.5vw);
+                    height: clamp(2.8rem, 2.5vw, 2.5vw);
                     left: 0;
                     top: 0.5rem;
                 }
@@ -227,6 +227,36 @@
             display: none;
         }
     }   
+    .kfc-form__content{
+        flex-direction: column;
+        gap: 6rem;
+        padding-top: 3rem;
+        .steps{
+            ul,h4,h3{
+                padding-right: 0;
+            }
+            ul, h4 {
+                font-size: 1.6rem;
+            }
+            h3{
+                font-size: 2.5rem;
+            }
+            h4{
+                margin-top: 3rem;
+            }
+            ul{
+                li{
+                    padding-left: 2rem;
+                }
+                li::before{
+                    width: 1.6rem;
+                    height: 1.6rem;
+                    background-size: 1.6rem;
+                    top: 0;
+                }
+            }
+        }
+    }
 }
 
 @media(max-width: fun.breakpoints('ipad-big')){

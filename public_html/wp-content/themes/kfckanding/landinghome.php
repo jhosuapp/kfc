@@ -65,7 +65,7 @@ Template Name: landinghomen
     </picture>
 </section>
 
-<section class="container container--top kfc-form custom-fonts">
+<section class="container container--top container--bottom kfc-form custom-fonts">
     <article>
         <h3 class="center frenteNacionalregular">¿Cómo participar?</h3>
     </article>
