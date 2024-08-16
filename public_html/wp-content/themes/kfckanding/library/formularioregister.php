@@ -150,4 +150,96 @@ function red_register_messages() {
        echo '</div>';
    }	
 }
+
+/*==================REGISTRO CODIGOS=====================================*/
+/*=======================================================================*/
+
+// Crea el formulario y maneja la subida
+function registroskfc_wp() {
+    if (isset($_POST['submit_form'])) {
+        // Seguridad para prevenir ataques CSRF
+        check_admin_referer('guardar_kfcformulario', 'registroskfc_nonce');
+
+        // Subir la imagen
+        if (!empty($_FILES['imagen_codigo']['name'])) {
+            $uploaded_file = wp_handle_upload($_FILES['imagen_codigo'], array('test_form' => false));
+            if (!isset($uploaded_file['error'])) {
+                $imagen_url = $uploaded_file['url'];
+            }
+        }
+
+        // Obtener el texto
+        $texcodigo = sanitize_text_field($_POST['text_codigo']);
+
+        // Calcular puntaje
+        $puntaje = intval($_POST['mi_puntaje']) + 10; // Incrementar el puntaje por cada envío
+
+        // Guardar en la base de datos
+        global $wpdb;
+        $tabla = $wpdb->prefix . 'codigo_registrado'; // Cambia 'codigo_registrado' por el nombre de tu tabla
+
+        $wpdb->insert(
+            $tabla,
+            array(
+                'imagen_url' => $imagen_url,
+                'texto' => $texcodigo,
+                'puntaje' => $puntaje
+            )
+        );
+
+        echo '<div class="notice notice-success"><p>Datos guardados correctamente.</p></div>';
+    }
+
+    // Formulario HTML
+    ?>
+    <form method="post" enctype="multipart/form-data">
+        <?php wp_nonce_field('guardar_kfcformulario', 'registroskfc_nonce'); ?>
+        <p>
+            <label for="mi_texto">Escribe un texto:</label><br>
+            <textarea name="mi_texto" id="mi_texto" required></textarea>
+        </p>
+        <p>
+            <label for="imagen_codigo">Sube una imagen:</label><br>
+            <input type="file" name="imagen_codigo" id="imagen_codigo" required>
+        </p>
+        
+        <p>
+            <input type="hidden" name="mi_puntaje" value="0"> <!-- Valor inicial del puntaje -->
+            <input type="submit" name="submit_form" value="Enviar">
+        </p>
+    </form>
+    <?php
+}
+
+// Función para mostrar el formulario en cualquier parte del sitio usando un shortcode
+function shortcode_kfcregisterform() {
+    ob_start();
+    registroskfc_wp();
+    return ob_get_clean();
+}
+add_shortcode('registroskfc', 'shortcode_kfcregisterform')
+
+?>
+
+
+<?php
+/**=========Crea Tabla para cada usuario========= */
+function crear_tabla_personalizada() {
+    global $wpdb;
+
+    $tabla = $wpdb->prefix . 'codigo_registrado'; // Cambia 'codigo_registrado' por el nombre que prefieras
+    $charset_collate = $wpdb->get_charset_collate();
+
+    $sql = "CREATE TABLE $tabla (
+        id mediumint(9) NOT NULL AUTO_INCREMENT,
+        imagen_url varchar(255) NOT NULL,
+        textcodigo text NOT NULL,
+        puntaje int(11) NOT NULL,
+        PRIMARY KEY  (id)
+    ) $charset_collate;";
+
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+    dbDelta($sql);
+}
+register_activation_hook(__FILE__, 'crear_tabla_personalizada');
 ?>
