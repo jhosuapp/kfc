@@ -4,12 +4,12 @@
 function mainlinks()
 {
     // Register styles:
-	wp_register_style( 'kfc-fonts', get_template_directory_uri() . '/css/fonts.css?v=1');
-	wp_register_style( 'main_style', get_template_directory_uri() . '/css/main.css');
+	wp_register_style( 'kfc-fonts', get_template_directory_uri() . '/css/fonts.css?v=' .rand());
+	wp_register_style( 'main_style', get_template_directory_uri() . '/css/main.css?v=' .rand());
 
 	 // Register Scripts:
     wp_register_script( 'main_jquery', get_template_directory_uri() . '/js/jquery.js');
-	wp_register_script( 'mainscript', get_template_directory_uri() . '/js/mainscript.js' );
+	wp_register_script( 'mainscript', get_template_directory_uri() . '/js/mainscript.js?v=' .rand());
 
 	// Add Styles ↓↓:
 	wp_enqueue_style( 'kfc-fonts' );
