@@ -32,7 +32,10 @@ Template Name: register-user
                 <input type="text">
             </div>
             <div class="block block--file">
-                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">Cargar factura</label>
+                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
+                    Cargar factura
+                </label>
                 <input type="file" name="file" id="file">
             </div>
             <div class="block block--submit fullwidth">
