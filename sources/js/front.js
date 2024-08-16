@@ -1,7 +1,7 @@
 //COMPONENTS
-import { getChildsTest } from "./modules/test";
+import { hamburger } from './layout';
 import "../sass/main.scss";
 
 window.addEventListener('load', ()=>{
-    getChildsTest();
+    hamburger();
 });

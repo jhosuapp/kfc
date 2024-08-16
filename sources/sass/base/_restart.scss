@@ -1,7 +1,16 @@
+@use './functions' as fun;
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: fun.color('bg');
+    position: relative;
+    overflow-x: hidden;
+    &.scroll-remove{
+        overflow: hidden;
+    }
 }
 a{
     text-decoration: none;

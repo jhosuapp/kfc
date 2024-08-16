@@ -1,0 +1,32 @@
+@use '../base/functions' as fun;
+
+.custom-fonts{
+    h1, h2, h3, h4, h5, strong, b, span, a, p, em, small, ul, li{
+        color: fun.color('bg');
+        &.aquinoregular{
+            font-family: 'aquinoregular';
+        }
+        &.frenteNacionalregular{
+            font-weight: 400;
+            font-family: 'frenteNacionalregular';
+        }
+        &.imperialregular{
+            font-family: 'imperialregular';
+        }
+        &.gothicBlack{
+            font-family: 'gothicBlack';
+            font-weight: 400;
+        }
+        &.milfBlack{
+            font-family: 'milfBlack';
+        }
+        &.center{
+            text-align: center;
+            width: 100%;
+        }
+    }
+    h3{
+        font-size: clamp(1.8rem, 3vw, 5rem);
+        text-transform: uppercase;
+    }
+}

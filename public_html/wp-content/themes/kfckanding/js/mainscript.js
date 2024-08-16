@@ -1,19 +1,10 @@
-const s = (() => {
-  const t = () => {
-    console.log("Ultima funcionalidad tests");
-  };
-  return {
-    childsTest: function() {
-      try {
-        t();
-      } catch (e) {
-      }
-    }
-  };
-})(), n = () => {
-  s.childsTest();
+const t = () => {
+  const e = document.querySelector("#hamburger");
+  e.addEventListener("click", () => {
+    e.parentElement.classList.toggle("active"), e.classList.toggle("active"), document.body.classList.toggle("scroll-remove");
+  });
 };
 window.addEventListener("load", () => {
-  n();
+  t();
 });
 //# sourceMappingURL=mainscript.js.map

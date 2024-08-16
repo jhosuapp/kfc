@@ -1,11 +1,10 @@
-<header>
-    <div class="topmenu">
+<header class="header">
+    <nav>
         <?php wp_nav_menu( array( 'theme_location' => 'header-menu' ) ); ?>
+    </nav>
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
-    <!--<h1>
-        <?php // bloginfo( 'name' );?>
-    </h1>-->
-    <?php // 👉👉 get_search_form(); ?>
-
-    <!-- ↓↓↓ HEADER CONTENT HERE ↓↓↓ -->
 </header>

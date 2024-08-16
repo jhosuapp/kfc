@@ -6,72 +6,110 @@ Template Name: landinghomen
 
 <?php get_header('wordpress'); ?>
 
-<section class="intro">
-  <div class="tripartita">
-    <div class="col">
-      <div class="textvariable">
-        <img class="kbum" src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="">
-        <div class="first">El Coronel</div>
-        <div class="sec">Te LLeva Al</div>
-      </div>
-      <img src="<?php echo get_template_directory_uri(); ?>/images/logocordillera01.svg" alt="">
-    </div>
-    <div class="colmid">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/bucket.png" alt="">
-    </div>
-    <div class="col">
-      <div class="textparticipa">
-        <div class="text">Participa por Boletas VIP</div>
-        <div class="list">
-          <ul>
-            <li><img src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt="">1 Combo Doble Dos Días</li>
-            <li><img src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt="">13 Boletas Sencillas por Día</li>
-          </ul>
+<section class="container container--top container--lines kfc-hero">
+    <!-- Lines top -->
+    <article class="lines">
+        <div></div>
+        <div></div>
+        <div></div>
+    </article>
+    <!-- End lines top -->
+    <article class="kfc-hero__content">
+         <div class="coronel custom-fonts">
+            <picture>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="">
+            </picture>
+            <h1 class="frenteNacionalregular">
+                El coronel
+                <strong class="frenteNacionalregular">Te lleva al</strong>
+                <strong class="frenteNacionalregular">Festival</strong>
+                <em class="frenteNacionalregular">Cordillera</em>
+                <small>PRO. simón bolívar / Bogotá - Colombia</small>
+            </h1>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="texto-couldbe">
-    <p>Tú puedes ser uno de los <span>14 ganadores de boletas VIP</span></p>
-  </div>
+        <div class="bucket">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/bucket.png" alt="Kfc pollo">
+        </div>
+        <div class="combo custom-fonts">
+            <h2 class="frenteNacionalregular">
+                Participa por boletas VIP
+            </h2>
+            <ul class="frenteNacionalregular">
+                <li class="frenteNacionalregular">
+                    1 Combo doble dos días
+                </li>
+                <li class="frenteNacionalregular">
+                    13 boletas sencillas por día
+                </li>
+            </ul>
+            <div>
+                <p class="gothicBlack">El combo será para el ganador<br> que más <strong class="gothicBlack">número de compras acumule</strong></p>
+            </div>
+        </div>
+    </article>
+    <article class="kfc-hero__bg">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/bg-hero.png" alt="Fondo kfc">
+    </article>
+</section>
 
+<section class="container container--top kfc-message custom-fonts">
+    <h3 class="center frenteNacionalregular"><strong class="gothicBlack">Tú puedes ser uno de los</strong> 14 ganadores de boletas vip</h3>
 </section>
-<section class="participa">
-  <div class="container">
-    <div class="titulo">
-      <div class="izq"><img src="" alt=""></div>
-      <div class="center">
-        <h3>¿Como participar?</h3>
-      </div>
-      <div class="der"><img src="" alt=""></div>
-    </div>
-    <div class="pasosform">
-      <div class="col pasosline">
-        <div class="pasos">
-          <div class="pasodiv"><img class="image" src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt=""><p><span>PASO 1:</span>Descarga y Regístrate en KFC APP</p></div>
-          <div class="pasodiv"><img class="image" src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt=""><p><span>PASO 2:</span>Ingresa a <img class="appimage" src="<?php echo get_template_directory_uri(); ?>/images/kfcexpress.svg" alt=""></p></div>
-          <div class="pasodiv"><img class="image" src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt=""><p><span>PASO 3:</span>Pide tu mega variedad XL gaseosa y Recoge en Tienda.</p></div>
-          <div class="pasodiv"><img class="image" src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt=""><p><span>PASO 4:</span>Diligencia el Formulario que encontraras aquí con tus mismos datos de KFC APP</p></div>
-          <div class="pasodiv"><img class="image" src="<?php echo get_template_directory_uri(); ?>/images/fuego.svg" alt=""><p><span>PASO 5:</span>Ingresa el Código de pedido, terminado en 010403</p></div>
-        </div>
-        <div class="centervariado">
-          <p>Entré más compras acumules,</p>
-          <p class="big">Más probabilidades Tienes de ganar</p>
-        </div>
-        <div class="coronelcool">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/coronelh.svg" alt=""> 
-        </div>
-      </div>
-      <div class="col form">
-        <?php echo do_shortcode('[register]'); ?>
-      </div>
-    </div>
-  </div>  
+
+<section class="kfc-splash">
+    <picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-right.png" alt="">
+    </picture>
+    <picture>
+        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-left.png" alt="">
+    </picture>
 </section>
-<div id="modal" class="modal modal-codigo">
-  <div class="container">
-    <div id="closemodal" class="cerrar">X</div>
-    <img class="image" src="<?php echo get_template_directory_uri(); ?>/images/codigopedido.png" alt="">
-  </div>
-</div>
+
+<section class="container container--top kfc-form custom-fonts">
+    <article>
+        <h3 class="center frenteNacionalregular">¿Cómo participar?</h3>
+    </article>
+    <article class="kfc-form__content">
+        <div class="steps">
+            <ul>
+                <li class="gothicBlack">
+                    <strong class="frenteNacionalregular"> PASO 1</strong>: Descarga y regístrate en KFC APP
+                </li>
+                <li class="gothicBlack">
+                    <strong class="frenteNacionalregular"> PASO 2</strong>: Ingresa a <img src="" />
+                </li>
+                <li class="gothicBlack">
+                    <strong class="frenteNacionalregular"> PASO 3</strong>: Pide tu mega variedad XL gaseosa y recoge en tienda
+                </li>
+                <li class="gothicBlack">
+                    <strong class="frenteNacionalregular"> PASO 4</strong>: Diligencia el formulario que encontrarás aquí con tus mismos datods de kfc app
+                </li>
+                <li class="gothicBlack">
+                    <strong class="frenteNacionalregular"> PASO 5</strong>: Ingresa el código de pedido, terminado en 010403
+                </li>
+            </ul>
+             <h4 class="gothicBlack center">
+                Entre más compras acumules
+            </h4>
+            <h3 class="center frenteNacionalregular">
+                Más probablidades<br> tienes de ganar
+            </h3>
+        </div>
+        <form class="form" action="">
+            <div class="block">
+                <label for="#">Nombre completo</label>
+                <input type="text">
+            </div>
+        </form>
+    </article>
+    <article class="kfc-form__bg">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/kfc.png" alt="Fondo kfc">
+        </picture>
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/bg-form.png" alt="">
+        </picture>
+    </article>
+</section>
+
 <?php get_footer(); ?>
