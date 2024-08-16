@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'aquinoregular';
+    src: url('fonts/aquino-webfont.woff2') format('woff2'),
+         url('fonts/aquino-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'frente_nacionalregular';
+    src: url('fonts/frentenacional-webfont.woff2') format('woff2'),
+         url('fonts/frentenacional-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+
+@font-face {
+    font-family: 'imperialregular';
+    src: url('fonts/imperial-webfont.woff2') format('woff2'),
+         url('fonts/imperial-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
