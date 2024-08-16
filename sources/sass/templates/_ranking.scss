@@ -2,6 +2,19 @@
 
 .kfc-ranking{
     min-height: calc(100vh - 12.5rem);
+    margin-bottom: 2.5rem !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.kfc-ranking__bg-montuain{
+    width: 100%;
+    display: flex;
+    img{
+        width: 100%;
+        margin-bottom: -10rem;
+        margin-top: -10rem;
+    }
 }
 
 .kfc-ranking__bg{
@@ -30,7 +43,6 @@
     display: flex;
     justify-content: center;
     padding: 6rem 0;
-    margin-bottom: 2.5rem;
     ul{
         list-style: none;
         width: 100%;
@@ -53,6 +65,15 @@
     }
 }
 
+.kfc-ranking__icon{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    img{
+        width: 10%;
+    }
+}
+
 @media(max-width: fun.breakpoints('laptop-small')){
     .kfc-ranking__content{
         ul{
@@ -68,6 +89,12 @@
             li{
                 font-size: 2.5rem;
             }
+        }
+    }
+    .kfc-ranking__bg-montuain{
+        img{
+            margin-top: 0;
+            margin-bottom: -2rem;
         }
     }
 }

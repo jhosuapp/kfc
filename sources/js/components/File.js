@@ -13,7 +13,7 @@ const File = ()=>{
         getDropZone.value = '';
     }
     
-    getDropZone.addEventListener('change', function(){
+    getDropZone?.addEventListener('change', function(){
         //Get file
         const getFile = getDropZone.files[0];
         fileLoaded.textContent = `Se ha cargado el archivo ${getFile.name}`;
@@ -41,7 +41,7 @@ const File = ()=>{
     });
 
     //Remove image
-    getRemoveImage.addEventListener('click', ()=>{
+    getRemoveImage?.addEventListener('click', ()=>{
         image.src = '';
         dropZone.value = '';
         getRemoveImage.classList.remove('active');

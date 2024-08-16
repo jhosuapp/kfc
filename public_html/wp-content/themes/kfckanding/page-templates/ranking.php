@@ -104,6 +104,14 @@ Template Name: ranking
             </li>
         </ul>
      </article>
+     <article class="kfc-ranking__icon">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-logo.png" alt="">
+     </article>
+     <article class="kfc-ranking__bg-montuain">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/bg-form.png" alt="Kfc pollo">
+        </picture>
+     </article>
 </section>
 
 <!-- Bg -->
