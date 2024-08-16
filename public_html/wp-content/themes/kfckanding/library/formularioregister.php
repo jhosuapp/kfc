@@ -181,6 +181,7 @@ function registroskfc_wp() {
         $wpdb->insert(
             $tabla,
             array(
+                'user_id' => get_current_user_id(),
                 'imagen_url' => $imagen_url,
                 'textcodigo' => $texcodigo,
                 'puntaje' => $puntaje
@@ -217,9 +218,46 @@ function shortcode_kfcregisterform() {
     registroskfc_wp();
     return ob_get_clean();
 }
-add_shortcode('registroskfc', 'shortcode_kfcregisterform')
+add_shortcode('registroskfc', 'shortcode_kfcregisterform');
+
+
+/**====================RANKING============================= */
+
+function mostrar_ranking_usuarios() {
+    global $wpdb;
+    $tabla = $wpdb->prefix . 'codigo_registrado'; // Asegúrate de usar el nombre correcto de tu tabla
+
+    // Consulta para sumar los puntajes por usuario y ordenar por puntaje total
+    $resultados = $wpdb->get_results("
+        SELECT user_id, SUM(puntaje) as total_puntaje
+        FROM $tabla
+        GROUP BY user_id
+        ORDER BY total_puntaje DESC
+    ");
+
+    // Mostrar el ranking
+    if (!empty($resultados)) {
+        echo '<h2>Ranking de Usuarios</h2>';
+        echo '<ul>';
+        foreach ($resultados as $fila) {
+            $usuario = get_userdata($fila->user_id);
+            echo '<li>' . esc_html($usuario->display_name) . ': ' . esc_html($fila->total_puntaje) . ' puntos</li>';
+        }
+        echo '</ol>';
+    } else {
+        echo '<p>No hay datos disponibles para mostrar el ranking.</p>';
+    }
+}
+
+function shortcode_ranking_usuarios() {
+    ob_start();
+    mostrar_ranking_usuarios();
+    return ob_get_clean();
+}
+add_shortcode('ranking_usuarios', 'shortcode_ranking_usuarios');
 
 ?>
+
 
 
 <?php
@@ -232,10 +270,12 @@ function crear_tabla_kfcordillera() {
 
     $sql = "CREATE TABLE $tabla (
         id mediumint(9) NOT NULL AUTO_INCREMENT,
+        user_id bigint(20) NOT NULL,
         imagen_url varchar(255) NOT NULL,
         textcodigo text NOT NULL,
         puntaje int(11) NOT NULL,
-        PRIMARY KEY  (id)
+        PRIMARY KEY  (id),
+        KEY user_id (user_id)
     ) $charset_collate;";
 
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');

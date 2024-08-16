@@ -1,32 +1,39 @@
-const m = () => {
+const u = () => {
   const e = document.querySelector("#hamburger");
   e.addEventListener("click", () => {
     e.parentElement.classList.toggle("active"), e.classList.toggle("active"), document.body.classList.toggle("scroll-remove");
   });
-}, u = () => {
-  const e = document.querySelector("#open-modal"), r = document.querySelector("#modal-instructions"), s = document.querySelectorAll(".modal--close-event");
+}, m = () => {
+  const e = document.querySelector("#open-modal"), o = document.querySelector("#modal-instructions"), n = document.querySelectorAll(".modal--close-event");
   e == null || e.addEventListener("click", () => {
-    r.classList.add("active");
-  }), s.forEach((c) => {
-    c.addEventListener("click", (n) => {
-      var o;
-      (o = n.target.closest(".modal")) == null || o.classList.remove("active");
+    o.classList.add("active");
+  }), n.forEach((t) => {
+    t.addEventListener("click", (r) => {
+      var c;
+      (c = r.target.closest(".modal")) == null || c.classList.remove("active");
     });
   });
-}, g = () => {
-  const e = document.querySelector("#file"), r = ["jpg", "png", "webp", "jpeg"], s = 1e6, c = document.querySelector("#render-error p"), n = document.querySelector("#render-image"), o = document.querySelector("#remove-image"), d = document.querySelector("#file-loaded"), l = (t) => {
-    c.classList.add("active"), c.textContent = t, e.value = "";
+}, v = () => {
+  const e = document.querySelector("#file"), o = ["jpg", "png", "webp", "jpeg"], n = 1e6, t = document.querySelector("#render-error p"), r = document.querySelector("#render-image"), c = document.querySelector("#remove-image"), d = document.querySelector("#file-loaded"), l = (s) => {
+    t.classList.add("active"), t.textContent = s, e.value = "";
   };
   e == null || e.addEventListener("change", function() {
-    const t = e.files[0];
-    d.textContent = `Se ha cargado el archivo ${t.name}`, console.log(t), n.src = "";
-    const a = t == null ? void 0 : t.name.split("."), i = a == null ? void 0 : a.pop();
-    r.includes(i) ? t.size >= s ? l(`El peso no puede ser mayor a ${s / s}MB`) : (n.src = URL.createObjectURL(t), c.classList.remove("active"), o.classList.add("active"), getMsgErrorGeneral.classList.add("hidden")) : l("Las extensiones permitidas son: jpg, png, webp y jpeg");
-  }), o == null || o.addEventListener("click", () => {
-    n.src = "", dropZone.value = "", o.classList.remove("active");
+    const s = e.files[0];
+    d.textContent = `Se ha cargado el archivo ${s.name}`, console.log(s), r.src = "";
+    const a = s == null ? void 0 : s.name.split("."), i = a == null ? void 0 : a.pop();
+    o.includes(i) ? s.size >= n ? l(`El peso no puede ser mayor a ${n / n}MB`) : (r.src = URL.createObjectURL(s), t.classList.remove("active"), c.classList.add("active"), getMsgErrorGeneral.classList.add("hidden")) : l("Las extensiones permitidas son: jpg, png, webp y jpeg");
+  }), c == null || c.addEventListener("click", () => {
+    r.src = "", dropZone.value = "", c.classList.remove("active");
+  });
+}, g = () => {
+  const e = document.querySelector("#form-login"), o = document.querySelector("#form-bill"), n = document.querySelector("#modal-register");
+  e == null || e.addEventListener("submit", (t) => {
+    t.preventDefault(), o.classList.remove("hidden"), e.classList.add("hidden");
+  }), o == null || o.addEventListener("submit", (t) => {
+    t.preventDefault(), n.classList.add("active");
   });
 };
 window.addEventListener("load", () => {
-  m(), u(), g();
+  u(), m(), g(), v();
 });
 //# sourceMappingURL=mainscript.js.map

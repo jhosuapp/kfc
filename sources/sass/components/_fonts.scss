@@ -1,7 +1,7 @@
 @use '../base/functions' as fun;
 
 .custom-fonts{
-    h1, h2, h3, h4, h5, strong, b, span, a, p, em, small, ul, li, label{
+    h1, h2, h3, h4, h5, strong, b, span, a, p, em, small, ul, li, label, div{
         color: fun.color('bg');
         &.aquinoregular{
             font-family: 'aquinoregular';

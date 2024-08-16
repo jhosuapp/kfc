@@ -1,6 +1,9 @@
 @use '../base/functions' as fun;
 
 .form-general{
+    &.hidden{
+        display: none;
+    }
     .block{
         display: flex;
         flex-direction: column;
@@ -28,12 +31,22 @@
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
+            img{
+                width: 2vw;
+                margin-right: 1rem;
+            }
         }
         &--submit{
             display: flex;
             flex-direction: row;
             justify-content: space-between;
             gap: 30px;
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            &.fullwidth{
+                max-width: 100%;
+            }
             input[type="button"],
             input[type="submit"],
             button{
@@ -95,11 +108,17 @@
         label{
             color: fun.color('black');
         }
+        img{
+            transition: .5s ease all;
+        }
         &:hover{
             background-color: fun.color('primary');
             color: fun.color('white');
             label{
                 color: fun.color('white');
+            }
+            img{
+                filter: contrast(0.5) brightness(1000%);
             }
         }
     }
@@ -118,6 +137,12 @@
                 label{
                     line-height: 3;
                 }
+                img{
+                    width: 1.5rem;
+                }
+            }
+            &--submit{
+                max-width: 90%;
             }
             &--terms{
                 input{
@@ -135,6 +160,12 @@
         input[type="email"],
         input[type="password"],
         input[type="number"]{
+            height: 4rem;
+        }
+        input[type="button"],
+        input[type="submit"],
+        button,
+        .button-form{
             height: 4rem;
         }
     }

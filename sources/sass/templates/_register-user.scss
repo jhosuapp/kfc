@@ -1,0 +1,91 @@
+@use '../base/functions' as fun;
+
+.kfc-register-user{
+    position: relative;
+    overflow: hidden;
+}
+
+.kfc-register-user__bg{
+    width: 100%;
+    img{
+        width: 100%;
+        margin-bottom: -8rem;
+        margin-top: -8rem
+    }
+}
+
+.kfc-register-user__content{
+    padding: 7rem 5%;
+    display: flex;
+    gap: 3rem;
+    .form, 
+    .coronel{
+        flex: 1;
+    }
+    .coronel{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img{
+            width: 5vw;
+        }
+        h1{
+            font-size: clamp(4rem, 7vh, 7vh);
+            text-align: center;
+            color: fun.color('bg');
+            display: flex;
+            flex-direction: column;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-family: 'frenteNacionalregular';
+            strong{
+                font-size: clamp(2.2rem, 4vh, 4vh);
+            }
+            em{
+                font-size: clamp(5rem, 9vh, 9vh);
+                font-style: normal;
+                margin-top: -2.5rem;
+            }
+            small{
+                font-size: clamp(1.4rem, 2vh, 2vh);
+                font-weight: 200;
+            }
+        }
+    }
+}
+
+@media(max-width: fun.breakpoints('laptop-small')){
+    .kfc-register-user__content{
+        flex-direction: column-reverse;
+    }
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .kfc-register-user__bg{
+        img{
+            margin-bottom: -1rem;
+            margin-top: 0;
+        }
+    }
+    .kfc-register-user__content{
+        padding: 4rem 5%;
+        .coronel{
+            picture img{
+                width: 4rem;
+            }
+            h1{
+                font-size: 4rem;
+                strong{
+                    font-size: 2rem;
+                }
+                em{
+                    font-size: 5rem;
+                    margin-top: -2rem;
+                }
+                small{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+}

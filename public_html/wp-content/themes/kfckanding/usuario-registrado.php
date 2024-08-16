@@ -3,53 +3,48 @@
 Template Name: Usuario registrado
 ===================*/
 ?>
+<?php
+require_once('wp-load.php'); 
+
+$username = $_GET['usuario'];
+
+// Verificar si el nombre de usuario existe
+if (username_exists($username)) {
+    $loginaccess = "";
+    $registracodigo = "active";
+} else {
+    $loginaccess = "active";
+    $registracodigo = "";
+}
+?>
+<style>
+    .login{
+        display:none;
+    }
+    .login.active{
+        display:block;
+    }
+    .registracode{
+        display:none;
+    }
+    .registracode.active{
+        display:block;
+    }
+</style>
 
 <?php get_header('wordpress'); ?>
 <section>
     <div class="doscol">
         <div class="col">
-            <div class="login">
+            <div class="login <?php echo $loginaccess;?>">
                 <form id="usernameForm">
-                    <label for="username">Nombre de usuario:</label>
+                    <label for="username">Documento de identidad:</label>
                     <input type="text" id="username" name="username">
                     <span id="usernameCheck"></span>
-                    <button type="submit">Registrarse</button>
+                    <div id="checkuser" style="font-size:20px;">Ingresar</div>
                 </form>
-
-
-                <?php
-                // check_username.php
-                if (isset($_POST['username'])) {
-                    $username = $_POST['username'];
-                    
-                    // Conectar a la base de datos
-                    $conn = new mysqli('localhost', 'usuario_db', 'password_db', 'nombre_db');
-                    
-                    if ($conn->connect_error) {
-                        die('Conexión fallida: ' . $conn->connect_error);
-                    }
-                    
-                    $stmt = $conn->prepare("SELECT COUNT(*) FROM usuarios WHERE username = ?");
-                    $stmt->bind_param('s', $username);
-                    $stmt->execute();
-                    $stmt->bind_result($count);
-                    $stmt->fetch();
-                    
-                    $response = array('exists' => $count > 0);
-                    
-                    echo json_encode($response);
-                    
-                    $stmt->close();
-                    $conn->close();
-                }
-                ?>
-
-
-
-
-
             </div>
-            <div class="registracode">            
+            <div class="registracode <?php echo $registracodigo;?>">            
                 <?php echo do_shortcode('[registroskfc]'); ?>
             </div>
         </div>
@@ -58,37 +53,16 @@ Template Name: Usuario registrado
         </div>
     </div>
 </section>
+
 <script>
-document.getElementById('usernameForm').addEventListener('submit', function(event) {
-    const usernameCheck = document.getElementById('usernameCheck').textContent;
-    if (usernameCheck === 'Este nombre de usuario ya está en uso.') {
-        event.preventDefault(); // Previene el envío del formulario
-        alert('Por favor, elige otro nombre de usuario.');
+document.addEventListener("DOMContentLoaded", function(event) {
+    document.getElementById("checkuser").addEventListener("click", urluser);
+    function urluser(){
+        let usuario = document.getElementById("username");
+        var usuarioValue = usuario.value;
+        let currenturl = location.protocol + '//' + location.host + location.pathname;
+        window.location.replace(currenturl+"?usuario="+usuarioValue);
     }
 });
-
-document.getElementById('username').addEventListener('input', function() {
-    const username = this.value;
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'check_username.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            const usernameCheck = document.getElementById('usernameCheck');
-            if (response.exists) {
-                usernameCheck.textContent = 'Este nombre de usuario ya está en uso.';
-                usernameCheck.style.color = 'red';
-            } else {
-                usernameCheck.textContent = 'Nombre de usuario disponible.';
-                usernameCheck.style.color = 'green';
-            }
-        }
-    };
-    xhr.send('username=' + encodeURIComponent(username));
-});
-
 </script>
-
-
 <?php get_footer(); ?>

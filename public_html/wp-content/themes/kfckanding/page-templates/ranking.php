@@ -12,7 +12,7 @@ Template Name: ranking
 </article>
 <!-- End Bg -->
 
-<section class="container container--top container--lines kfc-ranking">
+<section class="container container--top container--bottom container--lines kfc-ranking">
     <!-- Lines top -->
     <article class="lines">
         <div></div>
