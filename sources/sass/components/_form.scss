@@ -1,0 +1,141 @@
+@use '../base/functions' as fun;
+
+.form-general{
+    .block{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 2rem;
+        label{
+            margin-bottom: 0.5rem;
+            font-size: clamp(1.6rem, 2.2vw, 2.2vw);
+            em{
+                font-size: clamp(1.2rem, 1.5vw, 1.5vw);
+                font-style: normal;
+                font-weight: 200;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        }
+        &--file{
+            margin-top: 3rem;
+            input{
+                display: none;
+            }
+            label{
+                display: -webkit-box;
+                text-align: center;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+        }
+        &--submit{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 30px;
+            input[type="button"],
+            input[type="submit"],
+            button{
+                width: 100%;
+            }
+            img{
+                width: clamp(4rem, 7vh, 7vh);;
+            }
+        }
+        &--terms{
+            input{
+                padding-left: clamp(2.8rem, 2vw, 2vw);
+                position: relative;
+                appearance: none;
+                &::before{
+                    content: "";
+                    background-image: url('/wp-content/themes/kfckanding/images/fuego.svg');
+                    background-size: clamp(2.8rem, 2vw, 2vw);
+                    position: absolute;
+                    width: clamp(2.8rem, 2vw, 2vw);
+                    height: clamp(2.8rem, 2vw, 2vw);
+                    left: 0;
+                    top: clamp(-2.8rem, -2vw, -2vw);
+                    filter: grayscale(100%); 
+                }
+                &:checked::before{
+                    filter: grayscale(0);
+                }
+            }
+            label{
+                font-size: clamp(2rem, 1vw, 1vw);
+            }
+        }
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"]{
+        height: clamp(4rem, 7vh, 7vh);
+        border: none;
+        background-color: fun.color('bg');
+        outline: inherit;
+        padding: 0 2rem;
+    }
+    input[type="button"],
+    input[type="submit"],
+    button,
+    .button-form{
+        height: clamp(4rem, 7vh, 7vh);
+        background-color: fun.color('bg');
+        color: fun.color('black');
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        outline: inherit;
+        transition: .5s ease all;
+        label{
+            color: fun.color('black');
+        }
+        &:hover{
+            background-color: fun.color('primary');
+            color: fun.color('white');
+            label{
+                color: fun.color('white');
+            }
+        }
+    }
+}
+
+@media(max-width: fun.breakpoints('laptop-small')){
+    .form-general{
+        .block{
+            label{
+                font-size: 1.4rem;
+                em{
+                    font-size: 1.2rem;
+                }
+            }
+            &--file{
+                label{
+                    line-height: 3;
+                }
+            }
+            &--terms{
+                input{
+                    padding-left: 2rem;
+                    &::before{
+                        width: 2rem;
+                        height: 2rem;
+                        background-size: 2rem;
+                        top: -2rem;
+                    }
+                }
+            }
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"]{
+            height: 4rem;
+        }
+    }
+}

@@ -2,7 +2,10 @@
 $palette:(
     'white': #fff,
     'black': #000,
-    'primary': #200596
+    'primary': #E4002B,
+    'primary-darken': #8e061a,
+    'bg': #FFEFE2,
+    'linear': linear-gradient(to bottom,  #db0927 0%,#8e061a 100%)
 );
 //BREAKPOINTS
 $breakpoints: (

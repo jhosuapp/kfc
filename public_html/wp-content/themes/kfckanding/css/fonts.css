@@ -8,7 +8,7 @@
 
 
 @font-face {
-    font-family: 'frente_nacionalregular';
+    font-family: 'frenteNacionalregular';
     src: url('fonts/frentenacional-webfont.woff2') format('woff2'),
          url('fonts/frentenacional-webfont.woff') format('woff');
     font-weight: normal;
@@ -16,12 +16,25 @@
 }
 
 
-
-
 @font-face {
     font-family: 'imperialregular';
     src: url('fonts/imperial-webfont.woff2') format('woff2'),
          url('fonts/imperial-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'gothicBlack';
+    src: url('fonts/gothic-black-update.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'milfBlack';
+    src: url('fonts/milf-black.ttf');
     font-weight: normal;
     font-style: normal;
 }

@@ -1,7 +1,12 @@
+//LAYOUT
+import { hamburger } from './layout';
 //COMPONENTS
-import { getChildsTest } from "./modules/test";
+import { Modal, File } from './components';
+
 import "../sass/main.scss";
 
 window.addEventListener('load', ()=>{
-    getChildsTest();
+    hamburger();
+    Modal();
+    File();
 });

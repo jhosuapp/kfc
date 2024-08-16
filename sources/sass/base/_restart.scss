@@ -1,7 +1,22 @@
+@use './functions' as fun;
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+body{
+    background-color: fun.color('bg');
+    position: relative;
+    overflow-x: hidden;
+    &.scroll-remove{
+        overflow: hidden;
+    }
+}
+.mt-5{
+    margin-top: 5rem;
+}
+.mb-5{
+    margin-bottom: 5rem;
 }
 a{
     text-decoration: none;
