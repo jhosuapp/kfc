@@ -159,7 +159,7 @@ function registroskfc_wp() {
     if (isset($_POST['submit_form'])) {
         // Seguridad para prevenir ataques CSRF
         check_admin_referer('guardar_kfcformulario', 'registroskfc_nonce');
-
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
         // Subir la imagen
         if (!empty($_FILES['imagen_codigo']['name'])) {
             $uploaded_file = wp_handle_upload($_FILES['imagen_codigo'], array('test_form' => false));
@@ -182,7 +182,7 @@ function registroskfc_wp() {
             $tabla,
             array(
                 'imagen_url' => $imagen_url,
-                'texto' => $texcodigo,
+                'textcodigo' => $texcodigo,
                 'puntaje' => $puntaje
             )
         );
@@ -195,8 +195,8 @@ function registroskfc_wp() {
     <form method="post" enctype="multipart/form-data">
         <?php wp_nonce_field('guardar_kfcformulario', 'registroskfc_nonce'); ?>
         <p>
-            <label for="mi_texto">Escribe un texto:</label><br>
-            <textarea name="mi_texto" id="mi_texto" required></textarea>
+            <label for="text_codigo">Escribe un texto:</label><br>
+            <textarea name="text_codigo" id="text_codigo" required></textarea>
         </p>
         <p>
             <label for="imagen_codigo">Sube una imagen:</label><br>
@@ -224,10 +224,10 @@ add_shortcode('registroskfc', 'shortcode_kfcregisterform')
 
 <?php
 /**=========Crea Tabla para cada usuario========= */
-function crear_tabla_personalizada() {
+function crear_tabla_kfcordillera() {
     global $wpdb;
 
-    $tabla = $wpdb->prefix . 'codigo_registrado'; // Cambia 'codigo_registrado' por el nombre que prefieras
+    $tabla = $wpdb->prefix . 'codigo_registrado'; // Cambia 'mi_tabla' por el nombre que prefieras
     $charset_collate = $wpdb->get_charset_collate();
 
     $sql = "CREATE TABLE $tabla (
@@ -241,5 +241,10 @@ function crear_tabla_personalizada() {
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
     dbDelta($sql);
 }
-register_activation_hook(__FILE__, 'crear_tabla_personalizada');
+
+// Registrar el hook de activación
+function activar_creacion_tabla() {
+    crear_tabla_kfcordillera();
+}
+add_action('after_switch_theme', 'activar_creacion_tabla');
 ?>

@@ -9,7 +9,7 @@ Template Name: Usuario registrado
 <section>
     <div class="doscol">
         <div class="col">
-            <?php echo do_shortcode('[mi_formulario]'); ?>
+            <?php echo do_shortcode('[registroskfc]'); ?>
         </div>
         <div class="col logocordillera">
             <img src="<?php echo get_template_directory_uri(); ?>/images/logocordillera01.svg" alt="">
