@@ -143,6 +143,7 @@
     display: flex;
     padding: 0 5%;
     padding-top: 8rem;
+    margin-bottom: -30rem;
     .steps, .form{
         flex: 1;
     }
@@ -182,6 +183,7 @@
 .kfc-form__bg{
     display: flex;
     position: relative;
+    pointer-events: none;
     picture:last-child{
         position: absolute;
         bottom: 0;
@@ -231,6 +233,7 @@
         flex-direction: column;
         gap: 6rem;
         padding-top: 3rem;
+        margin-bottom: 0;
         .steps{
             ul,h4,h3{
                 padding-right: 0;

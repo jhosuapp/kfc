@@ -40,6 +40,8 @@
                     color: fun.color('white');
                     &::before{
                         height: 100%;
+                        bottom: unset;
+                        top: 0;
                     }
                 }
             }

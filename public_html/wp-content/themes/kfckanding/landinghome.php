@@ -17,7 +17,7 @@ Template Name: landinghomen
     <article class="kfc-hero__content">
          <div class="coronel custom-fonts">
             <picture>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="boom">
             </picture>
             <h1 class="frenteNacionalregular">
                 El coronel
@@ -58,10 +58,10 @@ Template Name: landinghomen
 
 <section class="kfc-splash">
     <picture>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-right.png" alt="">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-right.png" alt="Nube">
     </picture>
     <picture>
-        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-left.png" alt="">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/splash-left.png" alt="Nube">
     </picture>
 </section>
 
@@ -95,10 +95,49 @@ Template Name: landinghomen
                 Más probablidades<br> tienes de ganar
             </h3>
         </div>
-        <form class="form" action="">
+        <form class="form form-general" action="">
             <div class="block">
-                <label for="#">Nombre completo</label>
+                <label class="frenteNacionalregular" for="#">Nombre completo</label>
                 <input type="text">
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#">Documento identidad</label>
+                <input type="text">
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#">Correo</label>
+                <input type="text">
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#">Celular</label>
+                <input type="text">
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#">Código pedido <em class="gothicBlack" id="open-modal">Indetificalo aquí</em></label>
+                <input type="text">
+            </div>
+            <div class="block block--file">
+                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">Cargar factura</label>
+                <input type="file" name="file" id="file">
+            </div>
+            <div class="block block--terms mt-5">
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms">
+                    Aplican Términos y condiciones. Consúltalos en: <a href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                </label>
+            </div>
+            <div class="block block--terms">
+                <label for="policies">
+                    <input type="checkbox" id="policies" name="policies">
+                    Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
+                </label>
+            </div>
+            <div class="block block--submit mt-5">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
+                <button>
+                    <label class="frenteNacionalregular">Completar</label>
+                </button>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
             </div>
         </form>
     </article>
@@ -107,9 +146,21 @@ Template Name: landinghomen
             <img src="<?php echo get_template_directory_uri(); ?>/images/kfc.png" alt="Fondo kfc">
         </picture>
         <picture>
-            <img src="<?php echo get_template_directory_uri(); ?>/images/bg-form.png" alt="">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/bg-form.png" alt="Kfc pollo">
         </picture>
     </article>
 </section>
+
+
+<!-- Modal -->
+ <section class="modal" id="modal-instructions">
+    <article class="modal__bg modal--close-event"></article>
+    <article class="modal__content">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/codigopedido.png" alt="factura kfc">
+            <p class="modal__close modal--close-event">X</p>
+        </picture>
+    </article>
+ </section>
 
 <?php get_footer(); ?>
