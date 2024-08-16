@@ -49,6 +49,61 @@
         font-size: 2vw;
         cursor: pointer;
     }
+    &__lines{
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        span{
+            width: 2.5rem;
+            height: 5rem;
+            background-color: fun.color('bg');
+            display: flex;
+        }
+    }
+}
+
+.modal-register .modal{
+    &__content{
+        background: fun.color('linear');
+        flex-direction: column;
+        border: 2rem solid fun.color('bg');
+        max-width: 70rem;
+        figure img{
+            width: 20px;
+        }
+    }
+    &__block{
+        display: flex;
+        align-items: center;
+        padding: 3rem;
+        .item, figure{
+            flex: 1;
+        }
+        .item{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-align: center;
+            p{
+                font-size: 5rem;
+                line-height: 1;
+            }
+            img{
+                width: 4rem;
+            }
+        }
+        figure {
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    &__close{
+        color: fun.color('white');
+    }
 }
 
 @media(max-width: fun.breakpoints('ipad-big')){
@@ -60,6 +115,27 @@
         }
         &__close{
             font-size: 2rem;
+        }
+    }
+    .modal-register .modal{
+        &__block{
+            flex-direction: column;
+            .item{
+                p{
+                    font-size: 2.5rem;
+                }
+                img{
+                    width: 3rem;
+                }
+            }
+            figure{
+                display: flex;
+                justify-content: center;
+            }
+            figure img{
+                max-width: 80%;
+                margin-top: 1rem;
+            }
         }
     }
 }

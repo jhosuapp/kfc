@@ -75,14 +75,17 @@ Template Name: HOME
                 <li class="gothicBlack">
                     <strong class="frenteNacionalregular"> PASO 1</strong>: Descarga y regístrate en KFC APP
                 </li>
-                <li class="gothicBlack">
-                    <strong class="frenteNacionalregular"> PASO 2</strong>: Ingresa a <img src="" />
+                <li class="gothicBlack image">
+                    <strong class="frenteNacionalregular"> PASO 2</strong>
+                    <div class="gothicBlack">
+                        : Ingresa a <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-express.png" />
+                    </div>
                 </li>
                 <li class="gothicBlack">
                     <strong class="frenteNacionalregular"> PASO 3</strong>: Pide tu mega variedad XL gaseosa y recoge en tienda
                 </li>
                 <li class="gothicBlack">
-                    <strong class="frenteNacionalregular"> PASO 4</strong>: Diligencia el formulario que encontrarás aquí con tus mismos datods de kfc app
+                    <strong class="frenteNacionalregular"> PASO 4</strong>: Diligencia el formulario que encontrarás aquí con tus mismos datos de kfc app
                 </li>
                 <li class="gothicBlack">
                     <strong class="frenteNacionalregular"> PASO 5</strong>: Ingresa el código de pedido, terminado en 010403
@@ -92,7 +95,7 @@ Template Name: HOME
                 Entre más compras acumules
             </h4>
             <h3 class="center frenteNacionalregular">
-                Más probablidades<br> tienes de ganar
+                Más probabilidades<br> tienes de ganar
             </h3>
         </div>
         <form class="form form-general" action="">
@@ -113,7 +116,7 @@ Template Name: HOME
                 <input type="text">
             </div>
             <div class="block">
-                <label class="frenteNacionalregular" for="#">Código pedido <em class="gothicBlack" id="open-modal">Indetificalo aquí</em></label>
+                <label class="frenteNacionalregular" for="#">Código pedido <em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
                 <input type="text">
             </div>
             <div class="block block--file">
