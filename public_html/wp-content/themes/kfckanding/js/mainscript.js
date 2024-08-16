@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-    console.log("inicio")
-    function modalCodigo() {
-        console.log("empieza funcion")
-        let modalcode = document.getElementById("modal")
-        modalcode.classList.add('active')
+const s = (() => {
+  const t = () => {
+    console.log("Ultima funcionalidad tests");
+  };
+  return {
+    childsTest: function() {
+      try {
+        t();
+      } catch (e) {
+      }
     }
-    function cerramodal(){
-        let modalcode = document.getElementById("modal")
-        modalcode.classList.remove('active')
-    }
-    
-    document.getElementById("openmodalpedido").addEventListener("click",modalCodigo);
-    document.getElementById("closemodal").addEventListener("click",cerramodal);
-
-    
+  };
+})(), n = () => {
+  s.childsTest();
+};
+window.addEventListener("load", () => {
+  n();
 });
+//# sourceMappingURL=mainscript.js.map
