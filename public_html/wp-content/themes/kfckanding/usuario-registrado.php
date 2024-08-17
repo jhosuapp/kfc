@@ -1,21 +1,41 @@
 <?php
 /*=================
-Template Name: Usuario registrado
+Template Name: Usuario registradoOLD
 ===================*/
-?>
-<?php
-require_once('wp-load.php'); 
-
-$username = $_GET['usuario'];
-
-// Verificar si el nombre de usuario existe
-if (username_exists($username)) {
+$loginaccess = "";
+$registracodigo = "active";
+if ( is_user_logged_in() ){
     $loginaccess = "";
     $registracodigo = "active";
-} else {
+}else{
     $loginaccess = "active";
-    $registracodigo = "";
+    $registracodigo = "";    
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+    
+        if (username_exists($username)) {
+            $creds = array(
+                'user_login'    => $username,
+                'user_password' => $password,
+            );
+    
+            $user = wp_signon($creds, false);
+    
+            if (is_wp_error($user)) {
+                echo '<div class="error">' . $user->get_error_message() . '</div>';
+            } else {
+                wp_redirect(site_url( 'usuario-registrado/' ) );// Redirige al inicio después del login
+                exit;
+            }
+        } else {
+            wp_redirect(home_url());
+        }
+    }
 }
+
+get_header('wordpress');
 ?>
 <style>
     .login{
@@ -31,38 +51,29 @@ if (username_exists($username)) {
         display:block;
     }
 </style>
+<section class="login <?php echo $loginaccess;?>">
+    <div class="login-form">
 
-<?php get_header('wordpress'); ?>
-<section>
-    <div class="doscol">
-        <div class="col">
-            <div class="login <?php echo $loginaccess;?>">
-                <form id="usernameForm">
-                    <label for="username">Documento de identidad:</label>
-                    <input type="text" id="username" name="username">
-                    <span id="usernameCheck"></span>
-                    <div id="checkuser" style="font-size:20px;">Ingresar</div>
-                </form>
-            </div>
-            <div class="registracode <?php echo $registracodigo;?>">            
-                <?php echo do_shortcode('[registroskfc]'); ?>
-            </div>
-        </div>
-        <div class="col logocordillera">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/logocordillera01.svg" alt="">
-        </div>
-    </div>
+        <form method="POST">
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+            </p>
+            <p>
+                <label for="password">Password: JOSH OCULTEME</label>
+                <input type="password" name="password" id="password" required>
+            </p>
+            <p>
+                <button type="submit">Ingresar</button>
+            </p>
+        </form>
+</div>
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", function(event) {
-    document.getElementById("checkuser").addEventListener("click", urluser);
-    function urluser(){
-        let usuario = document.getElementById("username");
-        var usuarioValue = usuario.value;
-        let currenturl = location.protocol + '//' + location.host + location.pathname;
-        window.location.replace(currenturl+"?usuario="+usuarioValue);
-    }
-});
-</script>
+<section class="registracode <?php echo $registracodigo;?>">
+    <?php echo do_shortcode('[registroskfc]'); ?>
+</section>
+
+
+
 <?php get_footer(); ?>

@@ -21,7 +21,8 @@ Template Name: ranking
     </article>
     <!-- End lines top -->
      <article class="kfc-ranking__content custom-fonts">
-        <ul>
+        <?php echo do_shortcode('[ranking_usuarios]'); ?>
+        <!--<ul>
             <li>
                 <p class="frenteNacionalregular">1</p>
                 <p class="frenteNacionalregular">Nombre del participante</p>
@@ -103,6 +104,7 @@ Template Name: ranking
                 <p class="frenteNacionalregular">40</p>
             </li>
         </ul>
+        -->
      </article>
      <article class="kfc-ranking__icon">
         <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-logo.png" alt="">

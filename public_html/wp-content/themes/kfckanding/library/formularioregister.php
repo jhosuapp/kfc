@@ -237,13 +237,16 @@ function mostrar_ranking_usuarios() {
 
     // Mostrar el ranking
     if (!empty($resultados)) {
-        echo '<h2>Ranking de Usuarios</h2>';
         echo '<ul>';
+        $cont = 1;
         foreach ($resultados as $fila) {
             $usuario = get_userdata($fila->user_id);
-            echo '<li>' . esc_html($usuario->display_name) . ': ' . esc_html($fila->total_puntaje) . ' puntos</li>';
+            $user_meta = get_user_meta( $fila->user_id );
+            $nombreuser = get_user_meta( $fila->user_id, 'first_name', true );
+            echo '<li><p class="frenteNacionalregular">'. $cont .'</p><p class="frenteNacionalregular">' . $nombreuser . '</p><p class="frenteNacionalregular">' . esc_html($fila->total_puntaje) . '</p> </li>';
+            $cont = $cont + 1;
         }
-        echo '</ol>';
+        echo '</ul>';
     } else {
         echo '<p>No hay datos disponibles para mostrar el ranking.</p>';
     }

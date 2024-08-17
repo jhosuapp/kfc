@@ -147,6 +147,10 @@ Template Name: HOME
             </div>
         </form>
     </article>
+
+    
+<?php echo do_shortcode('[register]'); ?>
+
     <article class="kfc-form__bg">
         <picture>
             <img src="<?php echo get_template_directory_uri(); ?>/images/kfc.png" alt="Fondo kfc">
