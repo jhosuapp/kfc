@@ -227,6 +227,14 @@ function registroskfc_wp() {
                 Cargar factura
             </label>
             <input type="file" name="imagen_codigo" id="file">
+            <p class="msg-error" id="error-file"></p>
+        </div>
+
+        <div class="general-prev-image hidden">
+            <div id="remove-image">
+                x
+            </div>
+            <img src="" alt="previsualizar factura" id="render-image">
         </div>
         
         <div class="block block--submit fullwidth">
