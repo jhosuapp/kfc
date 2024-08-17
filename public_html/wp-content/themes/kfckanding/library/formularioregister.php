@@ -215,11 +215,12 @@ function registroskfc_wp() {
 
     // Formulario HTML
     ?>
-    <form class="form form-general custom-fonts" method="post" enctype="multipart/form-data">
+    <form class="form form-general custom-fonts" method="post" enctype="multipart/form-data" id="form-bill">
         <?php wp_nonce_field('guardar_kfcformulario', 'registroskfc_nonce'); ?>
         <div class="block">
             <label class="frenteNacionalregular" for="text_codigo">Código pedido</label>
             <input type="text" name="text_codigo" id="text_codigo">
+            <p class="msg-error" id="error-code">Ingresa mínimo 5 caracteres</p>
         </div>
         <div class="block block--file">
             <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
@@ -227,6 +228,7 @@ function registroskfc_wp() {
                 Cargar factura
             </label>
             <input type="file" name="imagen_codigo" id="file">
+            <p class="msg-error" id="error-file-empty">Debe subir la factura</p>
             <p class="msg-error" id="error-file"></p>
         </div>
 
