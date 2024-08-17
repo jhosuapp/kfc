@@ -10,3 +10,39 @@
         display: block;
     }
 }
+
+.red_errors{
+    display: flex;
+    flex-direction: column;
+    br{
+        display: none;
+    }
+    .error, strong{
+        background-color: fun.color('bg');
+        color: fun.color('primary');
+        font-size: 2rem;
+        font-family: 'gothicBlack';
+    }
+    .error{
+        margin-bottom: 1rem;
+        min-height: 5rem;
+        display: flex;
+        align-items: center;
+        padding: 0 2rem;
+        padding-top: 0.5rem;
+    }
+}
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .red_errors{
+        .error, strong{
+            font-size: 1.3rem;
+        }
+        .error{
+            min-height: 3rem;
+        }
+    }
+    .msg-error{
+        font-size: 1.3rem;
+    }
+}

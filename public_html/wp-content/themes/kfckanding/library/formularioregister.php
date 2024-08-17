@@ -24,65 +24,77 @@ function red_registration_fields($reg_form_role) {	?>
 <?php
    ob_start();
    ?>	
-       <form id="red_registration_form" class="red_form" action="" method="POST">
-                <?php red_register_messages();	 ?>
-                <p>
-                    hiddenusername
-                    <input name="red_user_login" id="red_user_login" class="red_input" type="text"/>
-                </p>
-                <p>
-                    hidden passwd
-                    <input name="red_user_pass" id="password" class="red_input" type="password"/>
-                </p>
-                <p>
-                    <label for="red_user_first"><?php _e('Nombre completo'); ?></label>
-                    <input name="red_user_first" id="red_user_first" type="text" class="red_input" />
-                </p>
-                <p>
-                    <label for="userdocu"><?php _e('Documento de Identidad'); ?></label>
-                    <input name="userdocu" id="userdocu" type="text" class="red_input"/>
-                </p>
-                <p>
-                   <label for="red_user_email"><?php _e('Correo'); ?></label>
-                   <input name="red_user_email" id="red_user_email" class="red_input" type="email"/>
-               </p>
-                <p>
-                    <label for="usercelular"><?php _e('Celular'); ?></label>
-                    <input name="usercelular" id="usercelular" class="red_input" type="text"/>
-                </p>
-                <p>
-                    <label for="codigopedido"><?php _e('Código Pedido'); ?><span id="openmodalpedido">"Identificalo aqui"</span></label>
-                    <input name="codigopedido" id="codigopedido" class="red_input" type="text"/>
-                </p>
-                
-                
-                <div class="registerfooter">
-                    <p>
-                    <input type="hidden" name="red_csrf" value="<?php echo wp_create_nonce('red-csrf'); ?>"/>
-                    <input type="hidden" name="red_role" value="<?php echo $reg_form_role; ?>"/>
-                    <input type="submit" ID="btnregister" value="<?php _e('Completar'); ?>"/>
-                    </p>
+       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST">
+            <?php red_register_messages();	 ?>
+            <input name="red_user_login" id="red_user_login" class="red_input" type="hidden"/>
+            <input name="red_user_pass" id="password" class="red_input" type="hidden"/>
+            <div class="block">
+                <label class="frenteNacionalregular" for="red_user_first"><?php _e('Nombre completo'); ?></label>
+                <input type="text" name="red_user_first" id="red_user_first">
+                <p class="msg-error">Este campo es requerido</p>
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="userdocu"><?php _e('Documento de Identidad'); ?></label>
+                <input type="text" name="userdocu" id="userdocu">
+                <p class="msg-error">Este campo es requerido</p>
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="red_user_email"><?php _e('Correo'); ?></label>
+                <input type="email" name="red_user_email" id="red_user_email">
+                <p class="msg-error">Este campo es requerido</p>
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#"><?php _e('Celular'); ?></label>
+                <input type="text" name="usercelular" id="usercelular">
+                <p class="msg-error">Este campo es requerido</p>
+            </div>
+            <div class="block">
+                <label class="frenteNacionalregular" for="#"><?php _e('Código Pedido'); ?> <em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
+                <input type="text" name="codigopedido" id="codigopedido" >
+                <p class="msg-error">Este campo es requerido</p>
+            </div>
+            <!-- Estos campos no se han añadido -->
+            <div class="block block--file">
+                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
+                    Cargar factura
+                </label>
+                <input type="file" name="imagen_codigo" id="file">
+                <p class="msg-error" id="error-file-empty">Debe subir la factura</p>
+                <p class="msg-error" id="error-file"></p>
+            </div>
+
+            <div class="general-prev-image hidden">
+                <div id="remove-image">
+                    x
                 </div>
-           
+                <img src="" alt="previsualizar factura" id="render-image">
+            </div>
+            <div class="block block--terms mt-5">
+                <label for="terms">
+                    <input type="checkbox" id="terms" name="terms">
+                    Aplican Términos y condiciones. Consúltalos en: <a href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                </label>
+                <p class="msg-error">Marque la casilla de autorización</p>
+            </div>
+            <div class="block block--terms">
+                <label for="policies">
+                    <input type="checkbox" id="policies" name="policies">
+                    Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
+                </label>
+                <p class="msg-error">Marque la casilla de autorización</p>
+            </div>
+
+            <div class="block block--submit mt-5">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
+                <input type="hidden" name="red_csrf" value="<?php echo wp_create_nonce('red-csrf'); ?>"/>
+                <input type="hidden" name="red_role" value="<?php echo $reg_form_role; ?>"/>
+                <button type="submit">
+                    <label class="frenteNacionalregular" id="btnregister">Completar</label>
+                </button>
+                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
+            </div>
        </form>  
-<style>
-.red_form {
-   width: 100%!important;
-   max-width: 100%!important;
-   padding: 30px 20px;
-}
-.red_errors {
-   color: #ee0000;
-   margin-bottom: 12px;
-   width: 100%!important;
-   max-width: 100%!important;
-}
-.red_form label::after {
-   content: " *";
-   color: red;
-   font-weight: bold;
-}
-</style>
    <?php
    return ob_get_clean();
 }
@@ -97,23 +109,23 @@ function red_add_new_user() {
    if ($red_role == (int) filter_var(AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "shop_manager"; }  elseif ($red_role == (int) filter_var(SECURE_AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "customer"; } elseif ($red_role == (int) filter_var(NONCE_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "contributor"; } elseif ($red_role == (int) filter_var(AUTH_SALT, FILTER_SANITIZE_NUMBER_INT)  ) { $role = "author"; } elseif ($red_role ==  (int) filter_var(SECURE_AUTH_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "editor"; }   elseif ($red_role == (int) filter_var(LOGGED_IN_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "administrator"; } else { $role = "subscriber"; }
      
      if(username_exists($user_login)) {
-         red_errors()->add('username_unavailable', __('Username already taken'));
+         red_errors()->add('username_unavailable', __('El documento ya ha sido registrado'));
      }
      if(!validate_username($user_login)) {
-         red_errors()->add('username_invalid', __('Invalid username'));
+         red_errors()->add('username_invalid', __('Número de documento invalido'));
      }
-     if($user_login == '') {
-         red_errors()->add('username_empty', __('Please enter a username'));
-     }
+    //  if($user_login == '') {
+    //      red_errors()->add('username_empty', __('Please enter a username'));
+    //  }
      if(!is_email($user_email)) {
-         red_errors()->add('email_invalid', __('Invalid email'));
+         red_errors()->add('email_invalid', __('El correo no es valido'));
      }
      if(email_exists($user_email)) {
-         red_errors()->add('email_used', __('Email already registered'));
+         red_errors()->add('email_used', __('El correo ya se encuentra registrado'));
      }
-     if($user_pass == '') {
-         red_errors()->add('password_empty', __('Please enter a password'));
-     }   
+    //  if($user_pass == '') {
+    //      red_errors()->add('password_empty', __('Please enter a password'));
+    //  }   
      $errors = red_errors()->get_error_messages();    
      if(empty($errors)) {         
          $new_user_id = wp_insert_user(array(

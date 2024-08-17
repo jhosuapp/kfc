@@ -98,58 +98,8 @@ Template Name: HOME
                 Más probabilidades<br> tienes de ganar
             </h3>
         </div>
-        <form class="form form-general" action="">
-            <div class="block">
-                <label class="frenteNacionalregular" for="#">Nombre completo</label>
-                <input type="text">
-            </div>
-            <div class="block">
-                <label class="frenteNacionalregular" for="#">Documento identidad</label>
-                <input type="text">
-            </div>
-            <div class="block">
-                <label class="frenteNacionalregular" for="#">Correo</label>
-                <input type="text">
-            </div>
-            <div class="block">
-                <label class="frenteNacionalregular" for="#">Celular</label>
-                <input type="text">
-            </div>
-            <div class="block">
-                <label class="frenteNacionalregular" for="#">Código pedido <em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
-                <input type="text">
-            </div>
-            <div class="block block--file">
-                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
-                    Cargar factura
-                </label>
-                <input type="file" name="file" id="file">
-            </div>
-            <div class="block block--terms mt-5">
-                <label for="terms">
-                    <input type="checkbox" id="terms" name="terms">
-                    Aplican Términos y condiciones. Consúltalos en: <a href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
-                </label>
-            </div>
-            <div class="block block--terms">
-                <label for="policies">
-                    <input type="checkbox" id="policies" name="policies">
-                    Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
-                </label>
-            </div>
-            <div class="block block--submit mt-5">
-                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
-                <button>
-                    <label class="frenteNacionalregular">Completar</label>
-                </button>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
-            </div>
-        </form>
+        <?php echo do_shortcode('[register]'); ?>
     </article>
-
-    
-<?php echo do_shortcode('[register]'); ?>
 
     <article class="kfc-form__bg">
         <picture>
