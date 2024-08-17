@@ -13,6 +13,7 @@ const File = ()=>{
         prevImage.classList.add('hidden');
         getMsgError.textContent = msg;
         getDropZone.value = '';
+        getDropZone.classList.add('validate-input');
         fileLoaded.textContent = 'Cargar factura';
         e.target.closest('form')?.classList.remove('validate-file');
     }
@@ -35,8 +36,9 @@ const File = ()=>{
                 //Render preview asset
                 image.src = URL.createObjectURL(getFile);
                 getMsgError.classList.remove('active');
-                getRemoveImage.classList.add('active');
                 prevImage.classList.remove('hidden');
+                getRemoveImage.classList.add('active');
+                getDropZone.classList.add('validate-input');
                 e.target.closest('form')?.classList.add('validate-file');
             }
         }else{
@@ -49,6 +51,7 @@ const File = ()=>{
         image.src = '';
         getDropZone.value = '';
         getRemoveImage.classList.remove('active');
+        getDropZone.classList.remove('validate-input');
         prevImage.classList.add('hidden');
         fileLoaded.textContent = 'Cargar factura';
         e.target.closest('form')?.classList.remove('validate-file');

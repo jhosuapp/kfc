@@ -220,6 +220,37 @@
     }
 }
 
+.user-is-register{
+    min-height: 120vh;
+    position: relative;
+    div{
+        position: sticky;
+        top: 5vh;
+        background-color: fun.color('bg');
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 5rem;
+        p, a{
+            color: fun.color('black');
+        }
+        p{
+            font-size: clamp(2rem, 5vh, 5vh);
+            text-align: center;
+        }
+        a{
+            width: 100%;
+            background: fun.color('linear') !important;
+            margin-top: 3rem;
+            label{
+                color: fun.color('white') !important;
+            }
+        }
+    }
+}
+
 @media(max-width: fun.breakpoints('laptop-small')){
     .kfc-hero__content{
         flex-direction: column;
@@ -280,6 +311,18 @@
                         margin-top:0.7rem;
                     }
                 }
+            }
+        }
+    }
+    .user-is-register{
+        min-height: auto;
+        div{
+            position: unset;
+            top: 0;
+            height: auto;
+            padding: 3rem;
+            p{
+                font-size: 1.8rem;
             }
         }
     }

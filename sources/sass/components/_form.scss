@@ -123,6 +123,13 @@
             }
         }
     }
+    input[type="button"],
+    input[type="submit"],
+    button{
+        label{
+            pointer-events: none;
+        }
+    }
     .general-prev-image{
         width: fit-content;
         padding: 0.5rem;

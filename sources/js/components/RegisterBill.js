@@ -27,7 +27,7 @@ const RegisterBill = () =>{
     //File
     const msgErrorFile = document.querySelector('#error-file-empty');
     const inputFile = document.querySelector('#file');
-    inputFile.addEventListener('change', ()=>{
+    inputFile?.addEventListener('change', ()=>{
         msgErrorFile.classList.remove('active')
     });
 

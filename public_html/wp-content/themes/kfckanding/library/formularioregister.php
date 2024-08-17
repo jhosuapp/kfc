@@ -15,7 +15,14 @@ if ($role_number == "shop_manager" ) { $reg_form_role = (int) filter_var(AUTH_KE
            $output = __('<p>User registration is not enabled</p>');
        }
        return $output;
-   }  $output = __('<p>You already have an account on this site, so there is no need to register again.</p>');
+   }  $output = __('<article class="form form-general user-is-register">
+                        <div class="block">
+                            <p class="frenteNacionalregular">Ya te encuentras registrado, sigue acumulando opciones:</p>
+                            <a href="/usuario-registrado" class="button-form">
+                                <label class="frenteNacionalregular">Registrar boleta</label>
+                            </a>
+                        </div>
+                    </article>');
    return $output;
 }
 add_shortcode('register', 'red_registration_form');
@@ -24,10 +31,10 @@ function red_registration_fields($reg_form_role) {	?>
 <?php
    ob_start();
    ?>	
-       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST">
+       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" noValidate>
             <?php red_register_messages();	 ?>
-            <input name="red_user_login" id="red_user_login" class="red_input" type="hidden"/>
-            <input name="red_user_pass" id="password" class="red_input" type="hidden"/>
+            <input name="red_user_login" id="red_user_login" class="red_input validate-input" type="hidden"/>
+            <input name="red_user_pass" id="password" class="red_input validate-input" type="hidden"/>
             <div class="block">
                 <label class="frenteNacionalregular" for="red_user_first"><?php _e('Nombre completo'); ?></label>
                 <input type="text" name="red_user_first" id="red_user_first">
@@ -73,7 +80,7 @@ function red_registration_fields($reg_form_role) {	?>
             <div class="block block--terms mt-5">
                 <label for="terms">
                     <input type="checkbox" id="terms" name="terms">
-                    Aplican Términos y condiciones. Consúltalos en: <a href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                    Aplican Términos y condiciones. Consúltalos en: <a target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>
