@@ -65,7 +65,7 @@ Template Name: HOME
     </picture>
 </section>
 
-<section class="container container--top container--bottom kfc-form custom-fonts">
+<section class="container container--top container--bottom kfc-form custom-fonts" id="form-kfc">
     <article>
         <h3 class="center frenteNacionalregular">¿Cómo participar?</h3>
     </article>

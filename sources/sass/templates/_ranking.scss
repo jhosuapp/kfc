@@ -5,6 +5,9 @@
     margin-bottom: 2.5rem !important;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .kfc-ranking__bg-montuain{
@@ -43,6 +46,14 @@
     display: flex;
     justify-content: center;
     padding: 6rem 0;
+    .not-found-data{
+        font-size: clamp(2rem, 5vh, 5vh);
+        color: fun.color('bg');
+        text-transform: uppercase;
+        margin: calc(6.5vh + 2rem) auto;
+        width: 90%;
+        text-align: center;
+    }
     ul{
         list-style: none;
         width: 100%;
@@ -85,6 +96,10 @@
 @media(max-width: fun.breakpoints('ipad-big')){
     .kfc-ranking__content{
         padding: 4rem 0;
+        .not-found-data{
+            font-size: 2.2rem;
+            max-width: 80%;
+        }
         ul{
             li{
                 font-size: 2.5rem;

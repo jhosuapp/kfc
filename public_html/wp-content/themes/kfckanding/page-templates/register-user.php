@@ -2,6 +2,40 @@
 /*=================
 Template Name: register-user
 ===================*/
+
+$loginaccess = "hidden";
+$registracodigo = "";
+if ( is_user_logged_in() ){
+    $loginaccess = "hidden";
+    $registracodigo = "";
+}else{
+    $loginaccess = "";
+    $registracodigo = "hidden";    
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $username = $_POST['username'];
+        $password = $_POST['username'];
+    
+        if (username_exists($username)) {
+            $creds = array(
+                'user_login'    => $username,
+                'user_password' => $password,
+            );
+    
+            $user = wp_signon($creds, false);
+    
+            if (is_wp_error($user)) {
+                echo '<div class="error">' . $user->get_error_message() . '</div>';
+            } else {
+                wp_redirect(site_url( 'usuario-registrado/' ) );// Redirige al inicio después del login
+                exit;
+            }
+        } else {
+            wp_redirect('/#form-kfc');
+        }
+    }
+}
+
 ?>
 
 <?php get_header('wordpress'); ?>
@@ -15,10 +49,11 @@ Template Name: register-user
     </article>
     <!-- End lines top -->
     <article class="kfc-register-user__content">
-        <form class="form form-general custom-fonts" action="" id="form-login">
+        <form method="POST" class="form form-general custom-fonts <?php echo $loginaccess;?>" id="form-login">
             <div class="block">
-                <label class="frenteNacionalregular" for="#">Documento de identidad</label>
-                <input type="text">
+                <label class="frenteNacionalregular" for="username">Documento de identidad</label>
+                <input type="text" name="username" id="username">
+                <p class="msg-error" id="error-document">Ingrese mínimo 5 caracteres</p>
             </div>
             <div class="block block--submit fullwidth">
                 <button type="submit">
@@ -26,7 +61,7 @@ Template Name: register-user
                 </button>
             </div>
         </form>
-        <form class="form form-general custom-fonts hidden" action="" id="form-bill">
+        <form class="form form-general custom-fonts <?php echo $registracodigo;?>" action="" id="form-bill">
             <div class="block">
                 <label class="frenteNacionalregular" for="#">Código pedido</label>
                 <input type="text">

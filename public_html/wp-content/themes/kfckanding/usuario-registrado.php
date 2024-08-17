@@ -1,6 +1,6 @@
 <?php
 /*=================
-Template Name: Usuario registradoOLD
+Template Name: Usuario registradoOLDTWO
 ===================*/
 $loginaccess = "";
 $registracodigo = "active";
@@ -52,22 +52,19 @@ get_header('wordpress');
     }
 </style>
 <section class="login <?php echo $loginaccess;?>">
-    <div class="login-form">
-
-        <form method="POST">
-            <p>
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username" required>
-            </p>
-            <p>
-                <label for="password">Password: JOSH OCULTEME</label>
-                <input type="password" name="password" id="password" required>
-            </p>
-            <p>
-                <button type="submit">Ingresar</button>
-            </p>
-        </form>
-</div>
+    <form method="POST">
+        <p>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+        </p>
+        <p>
+            <label for="password">Password: JOSH OCULTEME</label>
+            <input type="password" name="password" id="password" required>
+        </p>
+        <p>
+            <button type="submit">Ingresar</button>
+        </p>
+    </form>
 </section>
 
 <section class="registracode <?php echo $registracodigo;?>">

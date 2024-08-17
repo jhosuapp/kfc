@@ -1,0 +1,12 @@
+@use '../base/functions' as fun;
+
+.msg-error{
+    font-size: 2rem;
+    color: fun.color('bg');
+    font-family: 'gothicBlack';
+    margin-top: 0.5rem;
+    display: none;
+    &.active{
+        display: block;
+    }
+}

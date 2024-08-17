@@ -248,7 +248,7 @@ function mostrar_ranking_usuarios() {
         }
         echo '</ul>';
     } else {
-        echo '<p>No hay datos disponibles para mostrar el ranking.</p>';
+        echo '<p class="frenteNacionalregular not-found-data">No hay datos disponibles para mostrar el ranking.</p>';
     }
 }
 
