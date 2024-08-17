@@ -188,26 +188,53 @@ function registroskfc_wp() {
             )
         );
 
-        echo '<div class="notice notice-success"><p>Datos guardados correctamente.</p></div>';
+        echo '
+            <section class="modal modal-register active" id="modal-register">
+                <article class="modal__bg modal--close-event"></article>
+                <article class="modal__content">
+                    <p class="modal__close modal--close-event">X</p>
+                    <div class="modal__lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="modal__block custom-fonts">
+                        <div class="item">
+                            <img src="/wp-content/themes/kfckanding/images/kbum.svg" alt="boom">
+                            <p class="frenteNacionalregular">¡Factura <br> registrada!</p>
+                            <img src="/wp-content/themes/kfckanding/images/kbum.svg" alt="boom">
+                        </div>
+                        <figure>
+                            <img src="/wp-content/themes/kfckanding/images/kfc-modal.png" alt="Registro exitoso">
+                        </figure>
+                    </div>
+                </article>
+            </section>
+        ';
     }
 
     // Formulario HTML
     ?>
-    <form method="post" enctype="multipart/form-data">
+    <form class="form form-general custom-fonts" method="post" enctype="multipart/form-data">
         <?php wp_nonce_field('guardar_kfcformulario', 'registroskfc_nonce'); ?>
-        <p>
-            <label for="text_codigo">Escribe un texto:</label><br>
-            <textarea name="text_codigo" id="text_codigo" required></textarea>
-        </p>
-        <p>
-            <label for="imagen_codigo">Sube una imagen:</label><br>
-            <input type="file" name="imagen_codigo" id="imagen_codigo" required>
-        </p>
+        <div class="block">
+            <label class="frenteNacionalregular" for="text_codigo">Código pedido</label>
+            <input type="text" name="text_codigo" id="text_codigo">
+        </div>
+        <div class="block block--file">
+            <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
+                Cargar factura
+            </label>
+            <input type="file" name="imagen_codigo" id="file">
+        </div>
         
-        <p>
+        <div class="block block--submit fullwidth">
             <input type="hidden" name="mi_puntaje" value="0"> <!-- Valor inicial del puntaje -->
-            <input type="submit" name="submit_form" value="Enviar">
-        </p>
+            <button type="submit" name="submit_form">
+                <label class="frenteNacionalregular">ENVIAR</label>
+            </button>
+        </div>
     </form>
     <?php
 }
