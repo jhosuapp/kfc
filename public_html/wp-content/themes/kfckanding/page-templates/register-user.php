@@ -78,7 +78,7 @@ if ( is_user_logged_in() ){
                 <strong class="frenteNacionalregular">Te lleva al</strong>
                 <strong class="frenteNacionalregular">Festival</strong>
                 <em class="frenteNacionalregular">Cordillera</em>
-                <small>PRO. simón bolívar / Bogotá - Colombia</small>
+                <small class="national">PRO. simón bolívar / Bogotá - Colombia</small>
             </h1>
             <picture>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="boom">

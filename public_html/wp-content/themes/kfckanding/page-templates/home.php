@@ -24,7 +24,7 @@ Template Name: HOME
                 <strong class="frenteNacionalregular">Te lleva al</strong>
                 <strong class="frenteNacionalregular">Festival</strong>
                 <em class="frenteNacionalregular">Cordillera</em>
-                <small>PRO. simón bolívar / Bogotá - Colombia</small>
+                <small class="national">PRO. simón bolívar / Bogotá - Colombia</small>
             </h1>
         </div>
         <div class="bucket">
@@ -43,7 +43,7 @@ Template Name: HOME
                 </li>
             </ul>
             <div>
-                <p class="gothicBlack">El combo será para el ganador<br> que más <strong class="gothicBlack">número de compras acumule</strong></p>
+                <p class="national uppercase">*El combo será para el ganador<br> que más <strong class="national bold">número de compras acumule</strong></p>
             </div>
         </div>
     </article>
@@ -95,7 +95,7 @@ Template Name: HOME
                 Entre más compras acumules
             </h4>
             <h3 class="center frenteNacionalregular">
-                Más probabilidades<br> tienes de ganarHOLAAAAA
+                Más probabilidades<br> tienes de ganar
             </h3>
         </div>
         <?php echo do_shortcode('[register]'); ?>

@@ -38,3 +38,17 @@
     font-weight: normal;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'national';
+    src: url('fonts/national-regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'nationalBold';
+    src: url('fonts/national-bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}

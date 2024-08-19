@@ -152,14 +152,14 @@ function red_registration_fields($reg_form_role) {	?>
                 <img src="" alt="previsualizar factura" id="render-image">
             </div>
             <div class="block block--terms mt-5">
-                <label for="terms">
+                <label class="national uppercase" for="terms">
                     <input type="checkbox" id="terms" name="terms">
-                    Aplican Términos y condiciones. Consúltalos en: <a target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones">https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                    Aplican Términos y condiciones. Consúltalos en: https://www.infokfc.com/promos-colombia-terminos-y-condiciones
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>
             <div class="block block--terms">
-                <label for="policies">
+                <label class="national uppercase" for="policies">
                     <input type="checkbox" id="policies" name="policies">
                     Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
                 </label>

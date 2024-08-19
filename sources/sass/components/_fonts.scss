@@ -20,9 +20,18 @@
         &.milfBlack{
             font-family: 'milfBlack';
         }
+        &.national{
+            font-family: 'national';
+        }
         &.center{
             text-align: center;
             width: 100%;
+        }
+        &.uppercase{
+            text-transform: uppercase;
+        }
+        &.bold{
+            font-weight: 800 !important;
         }
     }
     h3{

@@ -13,11 +13,13 @@
         width: 100%;
         list-style: none;
         li{
-            font-size: clamp(1.5rem, 5vh, 3rem);
+            font-size: clamp(1.5rem, 5.5vh, 5.5vh);
             text-transform: uppercase;
             flex: 1;
             a{
-                font-family: 'frenteNacionalregular';
+                font-family: 'nationalBold';
+                font-weight: 800;
+                text-transform: uppercase;
                 width: 100%;
                 display: flex;
                 justify-content: center;
