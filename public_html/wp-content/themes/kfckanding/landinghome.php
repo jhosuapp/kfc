@@ -95,6 +95,8 @@ Template Name: landinghomen
                 Más probablidades<br> tienes de ganar
             </h3>
         </div>
+        <?php echo do_shortcode('[register]'); ?>
+        <!-- jhosss --
         <form class="form form-general" action="">
             <div class="block">
                 <label class="frenteNacionalregular" for="#">Nombre completo</label>
@@ -140,10 +142,8 @@ Template Name: landinghomen
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
             </div>
         </form>
+        -->
     </article>
-
-    
-<?php echo do_shortcode('[register]'); ?>
 
 
     <article class="kfc-form__bg">

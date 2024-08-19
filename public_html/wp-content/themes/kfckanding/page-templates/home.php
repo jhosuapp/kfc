@@ -95,7 +95,7 @@ Template Name: HOME
                 Entre más compras acumules
             </h4>
             <h3 class="center frenteNacionalregular">
-                Más probabilidades<br> tienes de ganar
+                Más probabilidades<br> tienes de ganarHOLAAAAA
             </h3>
         </div>
         <?php echo do_shortcode('[register]'); ?>

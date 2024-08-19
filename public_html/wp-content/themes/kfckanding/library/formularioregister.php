@@ -1,4 +1,75 @@
 <?php
+/*-------------Agregar campos a form registro----------------------*/
+
+function agregar_campos_personalizados_registro() {
+    ?>
+        <p>
+            <label for="userdocu"><?php _e('Documento de Identidad'); ?><br />
+                <input type="text" name="userdocu" id="userdocu" class="input" value="<?php echo esc_attr(wp_unslash($_POST['userdocu'])); ?>" />
+            </label>
+        </p>
+        <p>
+            <label for="usercelular"><?php _e('celular'); ?><br />
+                <input type="text" name="usercelular" id="usercelular" class="input" value="<?php echo esc_attr(wp_unslash($_POST['usercelular'])); ?>" />
+            </label>
+        </p>
+
+    <?php
+}
+add_action('register_form', 'agregar_campos_personalizados_registro');
+
+
+
+
+function guardar_campos_personalizados_registro($user_id) {
+    if (isset($_POST['userdocu'])) {
+        update_user_meta($user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
+    }
+    if (isset($_POST['usercelular'])) {
+        update_user_meta($user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
+    }
+}
+add_action('user_register', 'guardar_campos_personalizados_registro');
+
+function mostrar_campo_personalizado_perfil($user) {
+    ?>
+    <h3><?php _e('Información Adicional'); ?></h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="userdocu"><?php _e('Documento de Identidad'); ?></label></th>
+            <td>
+                <input type="text" name="userdocu" id="userdocu" value="<?php echo esc_attr(get_the_author_meta('userdocu', $user->ID)); ?>" class="regular-text" /><br />
+            </td>
+        </tr>
+        <tr>
+            <th><label for="usercelular"><?php _e('Celular'); ?></label></th>
+            <td>
+                <input type="text" name="usercelular" id="usercelular" value="<?php echo esc_attr(get_the_author_meta('usercelular', $user->ID)); ?>" class="regular-text" /><br />
+            </td>
+        </tr>
+
+
+    </table>
+    <?php
+}
+add_action('show_user_profile', 'mostrar_campo_personalizado_perfil');
+add_action('edit_user_profile', 'mostrar_campo_personalizado_perfil');
+
+
+function guardar_campo_personalizado_perfil($user_id) {
+    if (!current_user_can('edit_user', $user_id)) {
+        return false;
+    }
+    update_user_meta($user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
+    update_user_meta($user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
+}
+add_action('personal_options_update', 'guardar_campo_personalizado_perfil');
+add_action('edit_user_profile_update', 'guardar_campo_personalizado_perfil');
+
+
+
+/*REGISTRO de USUARIOS*/
+
 function red_registration_form($atts) {
     $atts = shortcode_atts( array(
        'role' => 'subscriber', 		
@@ -31,7 +102,7 @@ function red_registration_fields($reg_form_role) {	?>
 <?php
    ob_start();
    ?>	
-       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" noValidate>
+       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" enctype="multipart/form-data" noValidate>
             <?php red_register_messages();	 ?>
             <input name="red_user_login" id="red_user_login" class="red_input validate-input" type="hidden"/>
             <input name="red_user_pass" id="password" class="red_input validate-input" type="hidden"/>
@@ -55,12 +126,15 @@ function red_registration_fields($reg_form_role) {	?>
                 <input type="text" name="usercelular" id="usercelular">
                 <p class="msg-error">Este campo es requerido</p>
             </div>
+
+
+            <!-- Estos campos no se han añadido -->
             <div class="block">
-                <label class="frenteNacionalregular" for="#"><?php _e('Código Pedido'); ?> <em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
-                <input type="text" name="codigopedido" id="codigopedido" >
+                <label class="frenteNacionalregular" for="codigopedido"><?php _e('Código Pedido'); ?><em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
+                <textarea name="codigopedido" id="codigopedido"></textarea>
                 <p class="msg-error">Este campo es requerido</p>
             </div>
-            <!-- Estos campos no se han añadido -->
+            
             <div class="block block--file">
                 <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
@@ -101,6 +175,7 @@ function red_registration_fields($reg_form_role) {	?>
                 </button>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
             </div>
+
        </form>  
    <?php
    return ob_get_clean();
@@ -113,6 +188,7 @@ function red_add_new_user() {
      $user_pass		= $_POST["red_user_pass"];
      $red_role 		= sanitize_text_field( $_POST["red_role"] );	
      
+
    if ($red_role == (int) filter_var(AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "shop_manager"; }  elseif ($red_role == (int) filter_var(SECURE_AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "customer"; } elseif ($red_role == (int) filter_var(NONCE_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "contributor"; } elseif ($red_role == (int) filter_var(AUTH_SALT, FILTER_SANITIZE_NUMBER_INT)  ) { $role = "author"; } elseif ($red_role ==  (int) filter_var(SECURE_AUTH_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "editor"; }   elseif ($red_role == (int) filter_var(LOGGED_IN_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "administrator"; } else { $role = "subscriber"; }
      
      if(username_exists($user_login)) {
@@ -132,9 +208,42 @@ function red_add_new_user() {
      }
     //  if($user_pass == '') {
     //      red_errors()->add('password_empty', __('Please enter a password'));
-    //  }   
+    //  }
+
+
      $errors = red_errors()->get_error_messages();    
-     if(empty($errors)) {         
+     if(empty($errors)) { 
+
+        // Crear el usuario en WordPress GPT
+        //$user_id = wp_create_user($user_login, $user_pass, $user_email);
+        // Añadir metadatos adicionales al usuario
+        update_user_meta($user_id, 'first_name', $user_first);
+
+        update_user_meta($user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
+        update_user_meta($user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
+        //--------
+
+        // Subir la imagen
+        require_once(ABSPATH . 'wp-admin/includes/file.php');
+        if (!empty($_FILES['imagen_codigo']['name'])) {
+            $uploaded_file = wp_handle_upload($_FILES['imagen_codigo'], array('test_form' => false));
+            if (!isset($uploaded_file['error'])) {
+                $imagen_url = $uploaded_file['url'];
+            } else {
+                $imagen_url = '';
+            }
+        } else {
+            $imagen_url = '';
+        }
+
+        // Obtener el texto adicional
+        $texcodigo = sanitize_text_field($_POST['codigopedido']);
+        $puntaje = 10;  // Aquí defines cómo se calculará el puntaje
+
+        // Guardar en la base de datos en tu tabla personalizada
+        global $wpdb;
+        $tabla = $wpdb->prefix . 'codigo_registrado';  // Usa la tabla que ya creaste
+
          $new_user_id = wp_insert_user(array(
                  'user_login'		=> $user_login,
                  'user_pass'	 		=> $user_pass,
@@ -147,10 +256,20 @@ function red_add_new_user() {
          if($new_user_id) {
              wp_new_user_notification($new_user_id);              
              wp_set_auth_cookie(get_user_by( 'email', $user_email )->ID, true);
-             wp_set_current_user($new_user_id, $user_login);	
-             do_action('wp_login', $user_login, wp_get_current_user());            
+             wp_set_current_user($new_user_id, $user_login);
+             do_action('wp_login', $user_login, wp_get_current_user());
+             $wpdb->insert(
+                $tabla,
+                array(
+                    'user_id' => $new_user_id,
+                    'imagen_url' => $imagen_url,
+                    'textcodigo' => $texcodigo,
+                    'puntaje' => $puntaje
+                )
+            );            
              wp_redirect(home_url()); exit;
-         }         
+         }
+         
      } 
  }
 }
