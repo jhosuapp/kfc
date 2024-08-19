@@ -44,7 +44,7 @@
             }
         }
         h1{
-            font-size: clamp(4rem, 7vh, 7vh);
+            font-size: clamp(4rem, 8vh, 8vh);
             text-align: center;
             color: fun.color('bg');
             display: flex;
@@ -52,15 +52,15 @@
             text-transform: uppercase;
             font-weight: 400;
             strong{
-                font-size: clamp(2.2rem, 4vh, 4vh);
+                font-size: clamp(2.2rem, 4.5vh, 4.5vh);
             }
             em{
-                font-size: clamp(5rem, 9vh, 9vh);
+                font-size: clamp(5rem, 10vh, 10vh);
                 font-style: normal;
-                margin-top: -2.5rem;
+                margin-top: -3.5vh;
             }
             small{
-                font-size: clamp(1.4rem, 2vh, 2vh);
+                font-size: clamp(1.4rem, 2.5vh, 2.5vh);
                 font-weight: 200;
             }
         }
@@ -69,13 +69,15 @@
         padding-right: 5%;
         text-align: center;
         h2{
-            font-size: clamp(3rem, 5vh, 5vh);
+            font-size: clamp(3rem, 5.5vh, 5.5vh);
+            line-height: 1;
+            margin-bottom: 2vh;
             font-weight: 400;
             text-transform: uppercase;
         }
         ul{
             list-style: none;
-            font-size: clamp(2.8rem, 4.5vh, 4.5vh);
+            font-size: clamp(2.8rem, 5.5vh, 5.5vh);
             li{
                 position: relative;
                 display: flex;
@@ -98,7 +100,7 @@
         div{
             border: 0.1rem dashed fun.color('bg');
             padding: 2rem;
-            margin-top: 10vh;
+            margin-top: 6.5vh;
             border-radius: 2rem;
             p{
                 font-weight: 200;
@@ -221,7 +223,7 @@
 }
 
 .user-is-register{
-    min-height: 120vh;
+    min-height: 140vh;
     position: relative;
     div{
         position: sticky;
@@ -356,6 +358,12 @@
             }
             ul li{
                 font-size: 2.5rem;
+                &::before{
+                    width: 2rem;
+                    height: 2rem;
+                    background-size: 2rem;
+                    top: 0rem;
+                }
             }
             div{
                 margin-top: 4rem;

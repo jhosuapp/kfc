@@ -15,6 +15,7 @@ const File = ()=>{
         getDropZone.value = '';
         getDropZone.classList.add('validate-input');
         fileLoaded.textContent = 'Cargar factura';
+        fileLoaded.classList.remove('file-is-loaded');
         e.target.closest('form')?.classList.remove('validate-file');
     }
     
@@ -39,6 +40,7 @@ const File = ()=>{
                 prevImage.classList.remove('hidden');
                 getRemoveImage.classList.add('active');
                 getDropZone.classList.add('validate-input');
+                fileLoaded.classList.add('file-is-loaded');
                 e.target.closest('form')?.classList.add('validate-file');
             }
         }else{
@@ -54,6 +56,7 @@ const File = ()=>{
         getDropZone.classList.remove('validate-input');
         prevImage.classList.add('hidden');
         fileLoaded.textContent = 'Cargar factura';
+        fileLoaded.classList.remove('file-is-loaded');
         e.target.closest('form')?.classList.remove('validate-file');
     });
 }

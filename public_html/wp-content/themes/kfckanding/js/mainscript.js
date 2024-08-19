@@ -14,19 +14,19 @@ const g = () => {
     });
   });
 }, f = () => {
-  const e = document.querySelector("#file"), t = ["jpg", "png", "webp", "jpeg"], s = 1e6, c = document.querySelector("#error-file"), o = document.querySelector("#render-image"), a = document.querySelector("#remove-image"), r = document.querySelector("#file-loaded"), l = document.querySelector(".general-prev-image"), d = (i, n) => {
+  const e = document.querySelector("#file"), t = ["jpg", "png", "webp", "jpeg"], s = 1e6, c = document.querySelector("#error-file"), o = document.querySelector("#render-image"), a = document.querySelector("#remove-image"), r = document.querySelector("#file-loaded"), n = document.querySelector(".general-prev-image"), d = (i, l) => {
     var u;
-    c.classList.add("active"), l.classList.add("hidden"), c.textContent = i, e.value = "", e.classList.add("validate-input"), r.textContent = "Cargar factura", (u = n.target.closest("form")) == null || u.classList.remove("validate-file");
+    c.classList.add("active"), n.classList.add("hidden"), c.textContent = i, e.value = "", e.classList.add("validate-input"), r.textContent = "Cargar factura", r.classList.remove("file-is-loaded"), (u = l.target.closest("form")) == null || u.classList.remove("validate-file");
   };
   e == null || e.addEventListener("change", function(i) {
     var v;
-    const n = e.files[0];
-    r.textContent = `Se ha cargado el archivo ${n.name}`, o.src = "";
-    const u = n == null ? void 0 : n.name.split("."), L = u == null ? void 0 : u.pop();
-    t.includes(L) ? n.size >= s ? d(`El peso no puede ser mayor a ${s / s}MB`, i) : (o.src = URL.createObjectURL(n), c.classList.remove("active"), l.classList.remove("hidden"), a.classList.add("active"), e.classList.add("validate-input"), (v = i.target.closest("form")) == null || v.classList.add("validate-file")) : d("Las extensiones permitidas son: jpg, png, webp y jpeg", i);
+    const l = e.files[0];
+    r.textContent = `Se ha cargado el archivo ${l.name}`, o.src = "";
+    const u = l == null ? void 0 : l.name.split("."), L = u == null ? void 0 : u.pop();
+    t.includes(L) ? l.size >= s ? d(`El peso no puede ser mayor a ${s / s}MB`, i) : (o.src = URL.createObjectURL(l), c.classList.remove("active"), n.classList.remove("hidden"), a.classList.add("active"), e.classList.add("validate-input"), r.classList.add("file-is-loaded"), (v = i.target.closest("form")) == null || v.classList.add("validate-file")) : d("Las extensiones permitidas son: jpg, png, webp y jpeg", i);
   }), a == null || a.addEventListener("click", (i) => {
-    var n;
-    o.src = "", e.value = "", a.classList.remove("active"), e.classList.remove("validate-input"), l.classList.add("hidden"), r.textContent = "Cargar factura", (n = i.target.closest("form")) == null || n.classList.remove("validate-file");
+    var l;
+    o.src = "", e.value = "", a.classList.remove("active"), e.classList.remove("validate-input"), n.classList.add("hidden"), r.textContent = "Cargar factura", r.classList.remove("file-is-loaded"), (l = i.target.closest("form")) == null || l.classList.remove("validate-file");
   });
 }, m = (e, t, s) => {
   e == null || e.addEventListener("keyup", (c) => {
@@ -38,8 +38,8 @@ const g = () => {
   m(s, c, "validate");
   const o = document.querySelector("#text_codigo"), a = document.querySelector("#error-code");
   m(o, a, "validate-code");
-  const r = document.querySelector("#error-file-empty"), l = document.querySelector("#file");
-  l == null || l.addEventListener("change", () => {
+  const r = document.querySelector("#error-file-empty"), n = document.querySelector("#file");
+  n == null || n.addEventListener("change", () => {
     r.classList.remove("active");
   }), e == null || e.addEventListener("submit", (d) => {
     e.classList.contains("validate") || (c.classList.add("active"), d.preventDefault());

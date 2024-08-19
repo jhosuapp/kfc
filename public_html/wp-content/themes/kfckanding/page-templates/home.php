@@ -35,10 +35,10 @@ Template Name: HOME
                 Participa por boletas VIP
             </h2>
             <ul class="frenteNacionalregular">
-                <li class="frenteNacionalregular">
+                <li class="gothicBlack">
                     1 Combo doble dos días
                 </li>
-                <li class="frenteNacionalregular">
+                <li class="gothicBlack">
                     13 boletas sencillas por día
                 </li>
             </ul>

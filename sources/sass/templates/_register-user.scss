@@ -30,7 +30,7 @@
             width: 5vw;
         }
         h1{
-            font-size: clamp(4rem, 7vh, 7vh);
+            font-size: clamp(4rem, 8vh, 8vh);
             text-align: center;
             color: fun.color('bg');
             display: flex;
@@ -39,15 +39,15 @@
             font-weight: 400;
             font-family: 'frenteNacionalregular';
             strong{
-                font-size: clamp(2.2rem, 4vh, 4vh);
+                font-size: clamp(2.2rem, 4.5vh, 4.5vh);
             }
             em{
-                font-size: clamp(5rem, 9vh, 9vh);
+                font-size: clamp(5rem, 10vh, 10vh);
                 font-style: normal;
-                margin-top: -2.5rem;
+                margin-top: -3.5vh;
             }
             small{
-                font-size: clamp(1.4rem, 2vh, 2vh);
+                font-size: clamp(1.4rem, 2.5vh, 2.5vh);
                 font-weight: 200;
             }
         }

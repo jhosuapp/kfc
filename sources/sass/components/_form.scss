@@ -8,7 +8,8 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 2rem;
-        label{
+        label,
+        label span{
             margin-bottom: 0.5rem;
             font-size: clamp(1.6rem, 2.2vw, 2.2vw);
             cursor: pointer;
@@ -26,15 +27,29 @@
                 display: none;
             }
             label{
-                display: -webkit-box;
-                text-align: center;
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
+                span{
+                    display: -webkit-box;
+                    text-align: center;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                    color: fun.color('black');
+                    transition: .5s ease all;
+                }
+            }
+            #file-loaded{
+                &.file-is-loaded{
+                    display: -webkit-box;
+                }
             }
             img{
                 width: 2vw;
                 margin-right: 1rem;
+            }
+            &:hover{
+                span{
+                    color: fun.color('white');
+                }
             }
         }
         &--submit{
@@ -86,17 +101,19 @@
     input[type="email"],
     input[type="password"],
     input[type="number"]{
-        height: clamp(4rem, 7vh, 7vh);
+        height: clamp(4rem, 10vh, 10vh);
         border: none;
         background-color: fun.color('bg');
         outline: inherit;
         padding: 0 2rem;
+        font-family: 'frenteNacionalregular';
+        font-size: 4vh;
     }
     input[type="button"],
     input[type="submit"],
     button,
     .button-form{
-        height: clamp(4rem, 7vh, 7vh);
+        height: clamp(4rem, 10vh, 10vh);
         background-color: fun.color('bg');
         color: fun.color('black');
         display: flex;
@@ -189,6 +206,7 @@
         input[type="password"],
         input[type="number"]{
             height: 4rem;
+            font-size: 1.2rem;
         }
         input[type="button"],
         input[type="submit"],

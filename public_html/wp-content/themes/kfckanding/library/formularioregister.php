@@ -130,15 +130,15 @@ function red_registration_fields($reg_form_role) {	?>
 
             <!-- Estos campos no se han añadido -->
             <div class="block">
-                <label class="frenteNacionalregular" for="codigopedido"><?php _e('Código Pedido'); ?><em class="gothicBlack" id="open-modal">identifícalo aquí</em></label>
-                <textarea name="codigopedido" id="codigopedido"></textarea>
+                <label class="frenteNacionalregular" for="codigopedido"><?php _e('Código Pedido'); ?> <em class="national uppercase" id="open-modal"> *identifícalo aquí</em></label>
+                <input type="text" name="codigopedido" id="codigopedido" />
                 <p class="msg-error">Este campo es requerido</p>
             </div>
             
             <div class="block block--file">
-                <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
+                <label class="frenteNacionalregular button-form" for="file">
                     <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
-                    Cargar factura
+                    <span class="frenteNacionalregular" id="file-loaded">Cargar factura</span>
                 </label>
                 <input type="file" name="imagen_codigo" id="file">
                 <p class="msg-error" id="error-file-empty">Debe subir la factura</p>
@@ -361,9 +361,9 @@ function registroskfc_wp() {
             <p class="msg-error" id="error-code">Ingresa mínimo 5 caracteres</p>
         </div>
         <div class="block block--file">
-            <label class="frenteNacionalregular button-form" id="file-loaded" for="file">
+            <label class="frenteNacionalregular button-form" for="file">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/photo-icon.svg" alt="Icono camara">
-                Cargar factura
+                <span class="frenteNacionalregular" id="file-loaded">Cargar factura</span>
             </label>
             <input type="file" name="imagen_codigo" id="file">
             <p class="msg-error" id="error-file-empty">Debe subir la factura</p>
