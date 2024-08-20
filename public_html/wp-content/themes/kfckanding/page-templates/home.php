@@ -78,7 +78,7 @@ Template Name: HOME
                 <li class="gothicBlack image">
                     <strong class="frenteNacionalregular"> PASO 2</strong>
                     <div class="gothicBlack">
-                        : Ingresa a <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-express.png" />
+                        : Ingresa a <img src="<?php echo get_template_directory_uri(); ?>/images/icon-kfc.png" />
                     </div>
                 </li>
                 <li class="gothicBlack">

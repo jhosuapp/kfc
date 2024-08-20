@@ -55,7 +55,7 @@ const g = () => {
   document.querySelectorAll('input[type="checkbox"]').forEach((t) => {
     t.addEventListener("click", (c) => {
       const o = c.target.closest(".block").querySelector(".msg-error");
-      t.checked ? (t.classList.add("validate-input"), o.classList.remove("active")) : (t.classList.add("validate-input"), o.classList.add("active"));
+      t.checked ? (t.classList.add("validate-input"), o.classList.remove("active")) : (t.classList.remove("validate-input"), o.classList.add("active"));
     });
   });
 }, E = () => {

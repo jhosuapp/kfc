@@ -21,7 +21,7 @@ const useValidateCheckbox = ()=>{
                 item.classList.add('validate-input');
                 error.classList.remove('active');
             }else{
-                item.classList.add('validate-input');
+                item.classList.remove('validate-input');
                 error.classList.add('active');
             }
         });
