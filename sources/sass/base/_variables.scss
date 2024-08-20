@@ -5,7 +5,8 @@ $palette:(
     'primary': #E4002B,
     'primary-darken': #8e061a,
     'bg': #FFEFE2,
-    'linear': linear-gradient(to bottom,  #db0927 0%,#8e061a 100%)
+    'linear': linear-gradient(to bottom,  #db0927 0%,#8e061a 100%),
+    'linear-mobile': linear-gradient(to bottom,  #db0927 90%,#8e061a 100%)
 );
 //BREAKPOINTS
 $breakpoints: (

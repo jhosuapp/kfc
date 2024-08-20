@@ -74,17 +74,34 @@
                 width: 4rem;
             }
             h1{
-                font-size: 4rem;
+                font-size: 5rem;
                 strong{
-                    font-size: 2rem;
+                    font-size: 2.75rem;
                 }
                 em{
-                    font-size: 5rem;
+                    font-size: 6rem;
                     margin-top: -2rem;
                 }
                 small{
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                 }
+            }
+        }
+    }
+}
+
+@media(max-width: fun.breakpoints('mobile')){
+    .kfc-register-user__content{
+        form{
+            max-width: 25rem;
+            margin: auto;
+            width: 100%;
+            .block--file{
+                margin: 0.5rem 0 1.5rem 0;
+            }
+            button{
+                max-width: 20rem;
+                margin: auto;
             }
         }
     }

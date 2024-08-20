@@ -55,7 +55,7 @@ if ( is_user_logged_in() ){
                 <input type="text" name="username" id="username">
                 <p class="msg-error" id="error-document">Ingrese mínimo 5 caracteres</p>
             </div>
-            <div class="block block--submit fullwidth">
+            <div class="block block--submit fullwidth mt-5 mt-2-mobile">
                 <button type="submit">
                     <label class="frenteNacionalregular">INGRESAR</label>
                 </button>
@@ -78,16 +78,30 @@ if ( is_user_logged_in() ){
                 <strong class="frenteNacionalregular">Te lleva al</strong>
                 <strong class="frenteNacionalregular">Festival</strong>
                 <em class="frenteNacionalregular">Cordillera</em>
-                <small class="national">PRO. simón bolívar / Bogotá - Colombia</small>
+                <small class="national">PRQ. simón bolívar / Bogotá - Colombia</small>
             </h1>
             <picture>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="boom">
             </picture>
         </div>
     </article>
+    <article class="kfc-ranking__icon kfc-ranking__icon--mobile">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-logo.png" alt="">
+     </article>
     <article class="kfc-register-user__bg">
         <picture>
             <img src="<?php echo get_template_directory_uri(); ?>/images/bg-form.png" alt="Kfc pollo">
         </picture>
     </article>
 </section>
+
+<!-- Modal -->
+<section class="modal" id="modal-instructions">
+    <article class="modal__bg modal--close-event"></article>
+    <article class="modal__content">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/codigopedido.png" alt="factura kfc">
+            <p class="modal__close modal--close-event">X</p>
+        </picture>
+    </article>
+ </section>

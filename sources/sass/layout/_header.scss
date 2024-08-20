@@ -72,31 +72,41 @@
         }
         &.active{
             nav{
-                left: 0;
+                top: 0;
                 pointer-events: inherit;
             }
         }
         nav{
             position: absolute;
             width: 100%;
-            top: 0;
-            height: 100svh;
+            top: -120vh;
+            left: 0;
+            height: fit-content;
+            padding: 60px 0 30px 0;
             background-color: fun.color('bg');
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            left: -120%;
             pointer-events: none;
             margin-left: 0;
-            transition: 1s ease left;
+            transition: 1s ease top;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                height: 100vh;
+                width: 100%;
+                background-color: rgb(0,0,0, .55);
+                z-index: -1;
+            }
             ul{
                 flex-direction: column;
                 li{
                     &.current_page_item{
                         a{
                             color: fun.color('white');
-                            background: fun.color('linear');
+                            background: fun.color('primary');
                         }
                     }
                 }
