@@ -22,89 +22,33 @@ Template Name: ranking
     <!-- End lines top -->
      <article class="kfc-ranking__content custom-fonts">
         <?php echo do_shortcode('[ranking_usuarios]'); ?>
-        <!--<ul>
+        <!-- <ul>
             <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
+                <p class="frenteNacionalregular">1.</p>
+                <p class="frenteNacionalregular">
+                    Nombre del participante
+                    <div class="point"></div>
+                </p>
                 <p class="frenteNacionalregular">40</p>
             </li>
             <li>
                 <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
+                <p class="frenteNacionalregular">
+                    Jehosua Penagos Villafrade Villafrade Villafrade
+                    <div class="point"></div>
+                </p>
                 <p class="frenteNacionalregular">40</p>
             </li>
             <li>
                 <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
+                <p class="frenteNacionalregular">
+                    Orlando espinel mendoza Villafrade
+                    <div class="point"></div>
+                </p>
                 <p class="frenteNacionalregular">40</p>
             </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-            <li>
-                <p class="frenteNacionalregular">1</p>
-                <p class="frenteNacionalregular">Nombre del participante</p>
-                <p class="frenteNacionalregular">40</p>
-            </li>
-        </ul>
-        -->
+        </ul> -->
+       
      </article>
      <article class="kfc-ranking__icon">
         <img src="<?php echo get_template_directory_uri(); ?>/images/kfc-logo.png" alt="">

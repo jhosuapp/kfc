@@ -42,3 +42,14 @@
         }
     }
 }
+
+@media(max-width: fun.breakpoints('ipad-big')){
+    .custom-fonts{
+        h3{
+            font-size: 2.5rem;
+            .gothicBlack{
+                font-size: 2rem;
+            }
+        }
+    }
+}

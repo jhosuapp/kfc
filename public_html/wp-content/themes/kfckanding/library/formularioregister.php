@@ -153,14 +153,14 @@ function red_registration_fields($reg_form_role) {	?>
             </div>
             <div class="block block--terms mt-5">
                 <label class="national uppercase" for="terms">
-                    <input type="checkbox" id="terms" name="terms">
+                    <input type="checkbox" id="terms" name="terms" checked class="validate-input">
                     Aplican Términos y condiciones. Consúltalos en: https://www.infokfc.com/promos-colombia-terminos-y-condiciones
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>
             <div class="block block--terms">
                 <label class="national uppercase" for="policies">
-                    <input type="checkbox" id="policies" name="policies">
+                    <input type="checkbox" id="policies" name="policies" checked class="validate-input">
                     Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
@@ -356,7 +356,7 @@ function registroskfc_wp() {
     <form class="form form-general custom-fonts" method="post" enctype="multipart/form-data" id="form-bill">
         <?php wp_nonce_field('guardar_kfcformulario', 'registroskfc_nonce'); ?>
         <div class="block">
-            <label class="frenteNacionalregular" for="text_codigo">Código pedido</label>
+            <label class="frenteNacionalregular" for="text_codigo">Código pedido <em class="national uppercase" id="open-modal"> *identifícalo aquí</em></label>
             <input type="text" name="text_codigo" id="text_codigo">
             <p class="msg-error" id="error-code">Ingresa mínimo 5 caracteres</p>
         </div>
@@ -380,7 +380,7 @@ function registroskfc_wp() {
         <div class="block block--submit fullwidth">
             <input type="hidden" name="mi_puntaje" value="0"> <!-- Valor inicial del puntaje -->
             <button type="submit" name="submit_form">
-                <label class="frenteNacionalregular">ENVIAR</label>
+                <label class="frenteNacionalregular">COMPLETAR</label>
             </button>
         </div>
     </form>
@@ -418,7 +418,7 @@ function mostrar_ranking_usuarios() {
             $usuario = get_userdata($fila->user_id);
             $user_meta = get_user_meta( $fila->user_id );
             $nombreuser = get_user_meta( $fila->user_id, 'first_name', true );
-            echo '<li><p class="frenteNacionalregular">'. $cont .'</p><p class="frenteNacionalregular">' . $nombreuser . '</p><p class="frenteNacionalregular">' . esc_html($fila->total_puntaje) . '</p> </li>';
+            echo '<li><p class="frenteNacionalregular">'. $cont .'.</p><p class="frenteNacionalregular">' . $nombreuser . '<div class="point"></div></p><p class="frenteNacionalregular">' . esc_html($fila->total_puntaje) . '</p> </li>';
             $cont = $cont + 1;
         }
         echo '</ul>';

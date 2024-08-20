@@ -27,5 +27,18 @@
 @media(max-width: fun.breakpoints('ipad-big')){
     .container{
         max-width: 95%;
+        background: fun.color('linear-mobile');
+        &--no-linear-mobile{
+            background: fun.color('primary');
+        }
+        &--lines{
+            .lines{
+                gap: 2.5rem;
+                div{
+                    width: 3rem;
+                    height: 4.5rem;
+                }
+            }
+        }
     }
 }

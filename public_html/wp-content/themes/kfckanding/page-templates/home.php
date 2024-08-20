@@ -24,7 +24,7 @@ Template Name: HOME
                 <strong class="frenteNacionalregular">Te lleva al</strong>
                 <strong class="frenteNacionalregular">Festival</strong>
                 <em class="frenteNacionalregular">Cordillera</em>
-                <small class="national">PRO. simón bolívar / Bogotá - Colombia</small>
+                <small class="national">PRQ. simón bolívar / Bogotá - Colombia</small>
             </h1>
         </div>
         <div class="bucket">
@@ -52,7 +52,7 @@ Template Name: HOME
     </article>
 </section>
 
-<section class="container container--top kfc-message custom-fonts">
+<section class="container container--no-linear-mobile container--top kfc-message custom-fonts">
     <h3 class="center frenteNacionalregular"><strong class="gothicBlack">Tú puedes ser uno de los</strong> 14 ganadores de boletas vip</h3>
 </section>
 
@@ -98,6 +98,7 @@ Template Name: HOME
                 Más probabilidades<br> tienes de ganar
             </h3>
         </div>
+        <div class="home__divider"></div>
         <?php echo do_shortcode('[register]'); ?>
     </article>
 

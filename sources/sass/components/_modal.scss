@@ -35,7 +35,7 @@
             max-width: 50%;
             display: flex;
             position: relative;
-            border: 1rem solid fun.color('primary');
+            border: 2.5rem solid fun.color('primary');
         }
         img{
             width: 100%;
@@ -48,16 +48,19 @@
         color: fun.color('primary');
         font-size: 2vw;
         cursor: pointer;
+        font-family: 'national';
+        font-weight: 600;
     }
     &__lines{
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        gap: 3rem;
         span{
-            width: 2.5rem;
-            height: 5rem;
-            background-color: fun.color('bg');
+            width: 3.5rem;
+            height: 6rem;
+            background-color: #ffefe2;
             display: flex;
+            margin-bottom: -2rem;
         }
     }
 }
@@ -88,7 +91,6 @@
             text-align: center;
             p{
                 font-size: 5rem;
-                line-height: 1;
             }
             img{
                 width: 4rem;
@@ -116,10 +118,17 @@
         &__close{
             font-size: 2rem;
         }
+        &__lines{
+            gap: 2.5rem;
+            span{
+                width: 3rem;
+                height: 4rem;
+                margin-bottom: -1rem;
+            }
+        }
     }
     .modal-register .modal{
         &__block{
-            flex-direction: column;
             .item{
                 p{
                     font-size: 2.5rem;
@@ -135,6 +144,16 @@
             figure img{
                 max-width: 80%;
                 margin-top: 1rem;
+            }
+        }
+    }
+    .modal-register{
+        .modal{
+            &__block{
+                padding: 2rem 1rem;
+            }
+            &__content{
+                max-width: 50rem;
             }
         }
     }

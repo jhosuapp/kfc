@@ -57,11 +57,12 @@
     ul{
         list-style: none;
         width: 100%;
-        max-width: 50%;
+        max-width: 40%;
         li{
             display: flex;
             width: 100%;
             justify-content: space-between;
+            align-items: flex-end;
             font-size: clamp(2.8rem, 4.5vh, 4.5vh);
             gap: 10px;
             color: fun.color('bg');
@@ -70,8 +71,19 @@
                 width: fit-content;
             }
             p:nth-child(2){
-                width: 100%;
+                width: fit-content;
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
             }
+        }
+        .point{
+            background-image: url('/wp-content/themes/kfckanding/images/point.svg');
+            background-size: contain;
+            background-repeat: repeat;
+            width: 100%;
+            height: 20px;
         }
     }
 }
@@ -80,6 +92,9 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    &--mobile{
+        display: none;
+    }
     img{
         width: 10%;
     }
@@ -110,6 +125,14 @@
         img{
             margin-top: 0;
             margin-bottom: -2rem;
+        }
+    }
+    .kfc-ranking__icon{
+        &--mobile{
+            display: flex;
+        }
+        img{
+            width: 8rem;
         }
     }
 }

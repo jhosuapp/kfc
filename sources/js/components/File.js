@@ -1,7 +1,7 @@
 const File = ()=>{
     const getDropZone = document.querySelector('#file');
     const allowExtensions = ['jpg', 'png', 'webp', 'jpeg'];
-    const allowSize = 1000000;
+    const allowSize = 5000000;
     const getMsgError = document.querySelector('#error-file');
     const image = document.querySelector('#render-image');
     const getRemoveImage = document.querySelector('#remove-image');
@@ -32,7 +32,7 @@ const File = ()=>{
         if(allowExtensions.includes(getExtension)){
             //Validate size asset
             if(getFile.size >= allowSize){
-                reUseError(`El peso no puede ser mayor a ${allowSize / allowSize}MB`, e);
+                reUseError(`El peso no puede ser mayor a 5MB`, e);
             }else{
                 //Render preview asset
                 image.src = URL.createObjectURL(getFile);

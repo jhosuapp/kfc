@@ -93,7 +93,7 @@
                 }
             }
             label{
-                font-size: clamp(2rem, 1vw, 1vw);
+                font-size: clamp(2rem, 1.5vw, 1.5vw);
             }
         }
     }
@@ -125,6 +125,7 @@
         transition: .5s ease all;
         label{
             color: fun.color('black');
+            margin-bottom: 0 !important;
         }
         img{
             transition: .5s ease all;
@@ -172,11 +173,15 @@
 @media(max-width: fun.breakpoints('laptop-small')){
     .form-general{
         .block{
-            label{
-                font-size: 1.4rem;
+            label,
+            label span{
+                font-size: 2rem;
                 em{
-                    font-size: 1.2rem;
+                    font-size: 1.5rem;
                 }
+            }
+            label span{
+                margin-bottom: 0;
             }
             &--file{
                 label{
