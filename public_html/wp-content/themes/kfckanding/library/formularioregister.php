@@ -213,6 +213,7 @@ function red_add_new_user() {
 
      $errors = red_errors()->get_error_messages();    
      if(empty($errors)) { 
+            
 
         // Crear el usuario en WordPress GPT
         //$user_id = wp_create_user($user_login, $user_pass, $user_email);
@@ -266,14 +267,18 @@ function red_add_new_user() {
                     'textcodigo' => $texcodigo,
                     'puntaje' => $puntaje
                 )
-            );            
-             wp_redirect(home_url()); exit;
+            );
+            sleep(5);
+            wp_redirect(home_url()); exit;
          }
          
      } 
  }
 }
 add_action('init', 'red_add_new_user');
+function message_modal(){
+    
+}
 function red_errors(){
    static $wp_error; 
    return isset($wp_error) ? $wp_error : ($wp_error = new WP_Error(null, null, null));
