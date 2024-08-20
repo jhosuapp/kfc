@@ -154,7 +154,9 @@ function red_registration_fields($reg_form_role) {	?>
             <div class="block block--terms mt-5">
                 <label class="national uppercase" for="terms">
                     <input type="checkbox" id="terms" name="terms" checked class="validate-input">
-                    Aplican Términos y condiciones. Consúltalos en: https://www.infokfc.com/promos-colombia-terminos-y-condiciones
+                    <div class="national">
+                        Aplican Términos y condiciones. Consúltalos en: <a class="national" target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones"> https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                    </div>
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>

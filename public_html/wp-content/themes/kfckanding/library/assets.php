@@ -8,16 +8,16 @@ function mainlinks()
 	wp_register_style( 'main_style', get_template_directory_uri() . '/css/main.css?v=' .rand());
 
 	 // Register Scripts:
-    wp_register_script( 'main_jquery', get_template_directory_uri() . '/js/jquery.js');
 	wp_register_script( 'mainscript', get_template_directory_uri() . '/js/mainscript.js?v=' .rand());
+	wp_register_script( 'captcha', 'https://www.google.com/recaptcha/api.js?render=6Ld2aSsqAAAAADblFNxhuzDhtVVsAJh1oVtkNsXl');
 
 	// Add Styles ↓↓:
 	wp_enqueue_style( 'kfc-fonts' );
 	wp_enqueue_style( 'main_style' );
 	
 	// Add Scripts ↓↓:
-	wp_enqueue_script( 'main_jquery');
 	wp_enqueue_script( 'mainscript' );
+	wp_enqueue_script( 'captcha' );
 }
 add_action( 'wp_enqueue_scripts', 'mainlinks', 5 );//el 5 es la prioridad para no tener conflictos con js genericos de wordpress
 
