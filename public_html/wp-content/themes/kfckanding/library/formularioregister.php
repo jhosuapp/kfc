@@ -102,7 +102,7 @@ function red_registration_fields($reg_form_role) {	?>
 <?php
    ob_start();
    ?>	
-       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" enctype="multipart/form-data" onsubmit="onSubmit()" noValidate>
+       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" enctype="multipart/form-data" noValidate>
             <?php red_register_messages();	 ?>
             <input name="red_user_login" id="red_user_login" class="red_input validate-input" type="hidden"/>
             <input name="red_user_pass" id="password" class="red_input validate-input" type="hidden"/>
@@ -182,119 +182,140 @@ function red_registration_fields($reg_form_role) {	?>
             </div>
 
        </form>
-    
-        <script>
-            function onSubmit() {
-                console.log('entra al captcha')
-                grecaptcha.ready(function() {
-                    grecaptcha.execute('6Lc4eysqAAAAAD7EwL4gsNfLQZrmmuGOmY82nZwC', {action: 'submit'}).then(function(token) {
-                        document.getElementById('recaptchaResponse').value = token;
-                        document.getElementById('red_registration_form').submit(); // Envía el formulario automáticamente
-                    });
-                });
-                return false; // Prevenir el envío automático del formulario para esperar al reCAPTCHA
-            }
-        </script>
-
-
    <?php
    return ob_get_clean();
 }
+
+function validate_captcha($token_captcha) {
+    // Tu clave secreta de reCAPTCHA v3
+    $secret_key = '6Lc4eysqAAAAAGcE1xxa5leXMuPyQlXyjVV0bUtr';
+    // Datos de la solicitud POST a Google
+    $data = [
+        'secret' => $secret_key,
+        'response' => $token_captcha
+    ];
+    // Hacer la solicitud POST
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+    // Deshabilitar la verificación de SSL
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+
+    // Decodificar la respuesta
+    $response = curl_exec($curl);
+    if(curl_errno($curl)) {
+        die('Error en cURL: ' . curl_error($curl));
+    }
+    curl_close($curl);
+
+    $responseKeys = json_decode($response, true);
+    if ($responseKeys["success"] && $responseKeys["score"] >= 0.5) {
+        return 'valido';
+    } else {
+        return 'invalido';
+    }
+}
+
 function red_add_new_user() {
-   if (isset( $_POST["red_user_login"] ) && wp_verify_nonce($_POST['red_csrf'], 'red-csrf')) {
-     $user_login		= sanitize_user($_POST["red_user_login"]);
-     $user_email		= sanitize_email($_POST["red_user_email"]);
-     $user_first 	    = sanitize_text_field( $_POST["red_user_first"] );
-     $user_pass		= $_POST["red_user_pass"];
-     $red_role 		= sanitize_text_field( $_POST["red_role"] );	
-     
+    // Detener la ejecución y mostrar el contenido de la petición
+    if (isset( $_POST["red_user_login"] ) && wp_verify_nonce($_POST['red_csrf'], 'red-csrf')) {
+        $user_login		= sanitize_user($_POST["red_user_login"]);
+        $user_email		= sanitize_email($_POST["red_user_email"]);
+        $user_first 	    = sanitize_text_field( $_POST["red_user_first"] );
+        $user_pass		= $_POST["red_user_pass"];
+        $red_role 		= sanitize_text_field( $_POST["red_role"] );
+        $token_captcha = $_POST["recaptcha_response"];	
 
-   if ($red_role == (int) filter_var(AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "shop_manager"; }  elseif ($red_role == (int) filter_var(SECURE_AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "customer"; } elseif ($red_role == (int) filter_var(NONCE_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "contributor"; } elseif ($red_role == (int) filter_var(AUTH_SALT, FILTER_SANITIZE_NUMBER_INT)  ) { $role = "author"; } elseif ($red_role ==  (int) filter_var(SECURE_AUTH_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "editor"; }   elseif ($red_role == (int) filter_var(LOGGED_IN_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "administrator"; } else { $role = "subscriber"; }
-     
-     if(username_exists($user_login)) {
-         red_errors()->add('username_unavailable', __('El documento ya ha sido registrado'));
-     }
-     if(!validate_username($user_login)) {
-         red_errors()->add('username_invalid', __('Número de documento invalido'));
-     }
-    //  if($user_login == '') {
-    //      red_errors()->add('username_empty', __('Please enter a username'));
-    //  }
-     if(!is_email($user_email)) {
-         red_errors()->add('email_invalid', __('El correo no es valido'));
-     }
-     if(email_exists($user_email)) {
-         red_errors()->add('email_used', __('El correo ya se encuentra registrado'));
-     }
-    //  if($user_pass == '') {
-    //      red_errors()->add('password_empty', __('Please enter a password'));
-    //  }
-
-
-     $errors = red_errors()->get_error_messages();
-     if(empty($errors)) { 
-            
-
-        // Crear el usuario en WordPress GPT
-        //$user_id = wp_create_user($user_login, $user_pass, $user_email);
+    if ($red_role == (int) filter_var(AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "shop_manager"; }  elseif ($red_role == (int) filter_var(SECURE_AUTH_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "customer"; } elseif ($red_role == (int) filter_var(NONCE_KEY, FILTER_SANITIZE_NUMBER_INT) ) { $role = "contributor"; } elseif ($red_role == (int) filter_var(AUTH_SALT, FILTER_SANITIZE_NUMBER_INT)  ) { $role = "author"; } elseif ($red_role ==  (int) filter_var(SECURE_AUTH_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "editor"; }   elseif ($red_role == (int) filter_var(LOGGED_IN_SALT, FILTER_SANITIZE_NUMBER_INT) ) { $role = "administrator"; } else { $role = "subscriber"; }
         
-
-        // Subir la imagen
-        require_once(ABSPATH . 'wp-admin/includes/file.php');
-        if (!empty($_FILES['imagen_codigo']['name'])) {
-            $uploaded_file = wp_handle_upload($_FILES['imagen_codigo'], array('test_form' => false));
-            if (!isset($uploaded_file['error'])) {
-                $imagen_url = $uploaded_file['url'];
-            } else {
-                $imagen_url = '';
-            }
-        } else {
-            $imagen_url = '';
+        if(username_exists($user_login)) {
+            red_errors()->add('username_unavailable', __('El documento ya ha sido registrado'));
         }
+        if(!validate_username($user_login)) {
+            red_errors()->add('username_invalid', __('Número de documento invalido'));
+        }
+        //  if($user_login == '') {
+        //      red_errors()->add('username_empty', __('Please enter a username'));
+        //  }
+        if(!is_email($user_email)) {
+            red_errors()->add('email_invalid', __('El correo no es valido'));
+        }
+        if(email_exists($user_email)) {
+            red_errors()->add('email_used', __('El correo ya se encuentra registrado'));
+        }
+        //  if($user_pass == '') {
+        //      red_errors()->add('password_empty', __('Please enter a password'));
+        //  }
 
-        // Obtener el texto adicional
-        $texcodigo = sanitize_text_field($_POST['codigopedido']);
-        $puntaje = 10;  // Aquí defines cómo se calculará el puntaje
+        $errors = red_errors()->get_error_messages();
+        if(empty($errors)) { 
+            //Aquí validamos el captcha
+            $captcha_status = validate_captcha($token_captcha);
 
-        // Guardar en la base de datos en tu tabla personalizada
-        global $wpdb;
-        $tabla = $wpdb->prefix . 'codigo_registrado';  // Usa la tabla que ya creaste
-
-        $new_user_id = wp_insert_user(array(
-                 'user_login'		=> $user_login,
-                 'user_pass'	 		=> $user_pass,
-                 'user_email'		=> $user_email,
-                 'first_name'		=> $user_first,
-                 'user_registered'	=> date('Y-m-d H:i:s'),
-                 'role'				=> $role
-             )
-         );
-         // Añadir metadatos adicionales al usuario
-        update_user_meta($new_user_id, 'first_name', $user_first);
-
-        update_user_meta($new_user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
-        update_user_meta($new_user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
-        //--------
-        if($new_user_id) {
-            wp_new_user_notification($new_user_id);              
-            wp_set_auth_cookie(get_user_by( 'email', $user_email )->ID, true);
-            wp_set_current_user($new_user_id, $user_login);
-            do_action('wp_login', $user_login, wp_get_current_user());
-            $wpdb->insert(
-                $tabla,
-                array(
-                    'user_id' => $new_user_id,
-                    'imagen_url' => $imagen_url,
-                    'textcodigo' => $texcodigo,
-                    'puntaje' => $puntaje
-                )
-        );
-            //sleep(5);
-            wp_redirect(home_url()); exit;
-         }
-         
-     } 
- }
+            if($captcha_status == 'valido'){
+                 // Crear el usuario en WordPress GPT
+                //$user_id = wp_create_user($user_login, $user_pass, $user_email);
+    
+                // Subir la imagen
+                require_once(ABSPATH . 'wp-admin/includes/file.php');
+                if (!empty($_FILES['imagen_codigo']['name'])) {
+                    $uploaded_file = wp_handle_upload($_FILES['imagen_codigo'], array('test_form' => false));
+                    if (!isset($uploaded_file['error'])) {
+                        $imagen_url = $uploaded_file['url'];
+                    } else {
+                        $imagen_url = '';
+                    }
+                } else {
+                    $imagen_url = '';
+                }
+                // Obtener el texto adicional
+                $texcodigo = sanitize_text_field($_POST['codigopedido']);
+                $puntaje = 10;  // Aquí defines cómo se calculará el puntaje
+    
+                // Guardar en la base de datos en tu tabla personalizada
+                global $wpdb;
+                $tabla = $wpdb->prefix . 'codigo_registrado';  // Usa la tabla que ya creaste
+    
+                $new_user_id = wp_insert_user(array(
+                        'user_login'		=> $user_login,
+                        'user_pass'	 		=> $user_pass,
+                        'user_email'		=> $user_email,
+                        'first_name'		=> $user_first,
+                        'user_registered'	=> date('Y-m-d H:i:s'),
+                        'role'				=> $role
+                    )
+                );
+                // Añadir metadatos adicionales al usuario
+                update_user_meta($new_user_id, 'first_name', $user_first);
+    
+                update_user_meta($new_user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
+                update_user_meta($new_user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
+                //--------
+                if($new_user_id) {
+                    wp_new_user_notification($new_user_id);              
+                    wp_set_auth_cookie(get_user_by( 'email', $user_email )->ID, true);
+                    wp_set_current_user($new_user_id, $user_login);
+                    do_action('wp_login', $user_login, wp_get_current_user());
+                    $wpdb->insert(
+                        $tabla,
+                        array(
+                            'user_id' => $new_user_id,
+                            'imagen_url' => $imagen_url,
+                            'textcodigo' => $texcodigo,
+                            'puntaje' => $puntaje
+                        )
+                    );
+                    //sleep(5);
+                    wp_redirect(home_url()); exit;
+                }
+            }else{
+                red_errors()->add('invalid_token', __('El token de captcha es invalido, intentelo nuevamente'));
+            }
+        } 
+    }
 }
 add_action('init', 'red_add_new_user');
 function message_modal(){

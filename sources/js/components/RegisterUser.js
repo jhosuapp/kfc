@@ -28,6 +28,14 @@ const useValidateCheckbox = ()=>{
     });
 }
 
+const getTokenCaptcha = ()=>{
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Lc4eysqAAAAAD7EwL4gsNfLQZrmmuGOmY82nZwC', {action: 'submit'}).then(function(token) {
+            document.getElementById('recaptchaResponse').value = token;
+        });
+    });
+}
+
 const useValidateInputs = () => {
     const inputs = document.querySelectorAll('#red_registration_form .block input');
 
@@ -55,6 +63,7 @@ const RegisterUser = ()=>{
     useValues();
     useValidateCheckbox();
     useValidateInputs();
+    getTokenCaptcha();
     
     formRegister?.addEventListener('submit', (e)=>{
         const validate = document.querySelectorAll('#red_registration_form .block .validate-input');
@@ -69,8 +78,7 @@ const RegisterUser = ()=>{
             }
         });
         //Send form
-        if(validate.length == (inputs.length - 2)){
-            console.log('bien');
+        if(validate.length == (inputs.length - 3)){
         }else{
             e.preventDefault();
         }
