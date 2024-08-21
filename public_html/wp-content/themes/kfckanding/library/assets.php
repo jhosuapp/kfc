@@ -9,7 +9,7 @@ function mainlinks()
 
 	 // Register Scripts:
 	wp_register_script( 'mainscript', get_template_directory_uri() . '/js/mainscript.js?v=' .rand());
-	wp_register_script( 'captcha', 'https://www.google.com/recaptcha/api.js?render=6Ld2aSsqAAAAADblFNxhuzDhtVVsAJh1oVtkNsXl');
+	wp_register_script( 'captcha', 'https://www.google.com/recaptcha/api.js?render=6Lc4eysqAAAAAD7EwL4gsNfLQZrmmuGOmY82nZwC');
 
 	// Add Styles ↓↓:
 	wp_enqueue_style( 'kfc-fonts' );

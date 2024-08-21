@@ -102,7 +102,7 @@ function red_registration_fields($reg_form_role) {	?>
 <?php
    ob_start();
    ?>	
-       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" enctype="multipart/form-data" noValidate>
+       <form id="red_registration_form" class="red_form form form-general" action="/#form-kfc" method="POST" enctype="multipart/form-data" onsubmit="onSubmit()" noValidate>
             <?php red_register_messages();	 ?>
             <input name="red_user_login" id="red_user_login" class="red_input validate-input" type="hidden"/>
             <input name="red_user_pass" id="password" class="red_input validate-input" type="hidden"/>
@@ -155,7 +155,7 @@ function red_registration_fields($reg_form_role) {	?>
                 <label class="national uppercase" for="terms">
                     <input type="checkbox" id="terms" name="terms">
                     <div class="national">
-                        Aplican Términos y condiciones. Consúltalos en: <a class="national" target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones"> https://www.infokfc.com/promos-colombia/terminos-y-condiciones</a>
+                        Aplican Términos y condiciones. Consúltalos en: <a class="national" target="_blank" href="https://www.infokfc.com/promos-colombia/terminos-y-condiciones"> https://www.infokfc.com/promos-colombia/terminos-y-condiciones</a>
                     </div>
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
@@ -163,7 +163,9 @@ function red_registration_fields($reg_form_role) {	?>
             <div class="block block--terms">
                 <label class="national uppercase" for="policies">
                     <input type="checkbox" id="policies" name="policies">
-                    Autorizo a KFC Colombia el <a class="national" target="_blank" href="https://www.infokfc.com/terms/colombia-politica-de-tratamientos-de-datos-personales">tratamiento de datos personales</a> según las políticas de habeas data
+                    <div class="national">
+                        Autorizo a KFC Colombia el <a class="national" target="_blank" href="https://www.infokfc.com/terms/colombia-politica-de-tratamientos-de-datos-personales">tratamiento de datos personales</a> según las políticas de habeas data
+                    </div>
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>
@@ -172,13 +174,29 @@ function red_registration_fields($reg_form_role) {	?>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
                 <input type="hidden" name="red_csrf" value="<?php echo wp_create_nonce('red-csrf'); ?>"/>
                 <input type="hidden" name="red_role" value="<?php echo $reg_form_role; ?>"/>
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                 <button type="submit">
                     <label class="frenteNacionalregular" id="btnregister">Completar</label>
                 </button>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/kbum.svg" alt="Boom">
             </div>
 
-       </form>  
+       </form>
+    
+        <script>
+            function onSubmit() {
+                console.log('entra al captcha')
+                grecaptcha.ready(function() {
+                    grecaptcha.execute('6Lc4eysqAAAAAD7EwL4gsNfLQZrmmuGOmY82nZwC', {action: 'submit'}).then(function(token) {
+                        document.getElementById('recaptchaResponse').value = token;
+                        document.getElementById('red_registration_form').submit(); // Envía el formulario automáticamente
+                    });
+                });
+                return false; // Prevenir el envío automático del formulario para esperar al reCAPTCHA
+            }
+        </script>
+
+
    <?php
    return ob_get_clean();
 }
@@ -213,7 +231,7 @@ function red_add_new_user() {
     //  }
 
 
-     $errors = red_errors()->get_error_messages();    
+     $errors = red_errors()->get_error_messages();
      if(empty($errors)) { 
             
 
@@ -270,7 +288,7 @@ function red_add_new_user() {
                     'puntaje' => $puntaje
                 )
             );
-            sleep(5);
+            //sleep(5);
             wp_redirect(home_url()); exit;
          }
          
