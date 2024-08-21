@@ -11,7 +11,7 @@
 
 .kfc-hero__content{
     display: flex;
-    padding-top: 10vh;
+    padding-top: 8vh;
     position: relative;
     z-index: 2;
     .coronel,
@@ -26,10 +26,10 @@
     .bucket{
         margin-bottom: -2.7rem;
         position: relative;
-        bottom: -10vh;
+        bottom: -8vh;
         display: flex;
         justify-content: center;
-        padding-bottom: 10vh;
+        padding-bottom: 8vh;
         img{
             max-height: 60vh;
         }
@@ -318,7 +318,7 @@
                         margin-bottom: 0.5rem;
                     }
                     div{
-                        margin-top: 0.25rem;
+                        margin-top: 0.35rem;
                     }
                 }
             }

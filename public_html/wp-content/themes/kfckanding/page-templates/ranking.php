@@ -12,14 +12,17 @@ Template Name: ranking
 </article>
 <!-- End Bg -->
 
-<section class="container container--top container--bottom container--lines kfc-ranking">
-    <!-- Lines top -->
-    <article class="lines">
-        <div></div>
-        <div></div>
-        <div></div>
+<section class="container container--top container--bottom container--logos kfc-ranking">
+    <!-- logos top -->
+    <article class="logos">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/kfc.svg" alt="kfc">
+        </picture>
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/pepsi.png" alt="pepsi">
+        </picture>
     </article>
-    <!-- End lines top -->
+    <!-- End logos top -->
      <article class="kfc-ranking__content custom-fonts">
         <?php echo do_shortcode('[ranking_usuarios]'); ?>
         <!-- <ul>

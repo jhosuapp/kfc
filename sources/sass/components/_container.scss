@@ -16,6 +16,42 @@
             }
         }
     }
+    &--logos{
+        .logos{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 1vh !important;
+            picture:first-child{
+                padding-right: 1vw;
+                margin-right: 1vw;
+                position: relative;
+                display: flex;
+                align-items: center;
+                height: 5vh;
+                img{
+                    height: 100%;
+                    object-fit: contain;
+                }
+                &::before{
+                    content: "";
+                    width: 2px;
+                    height: 80%;
+                    background-color: fun.color('bg');
+                    right: 0;
+                    position: absolute;
+                }
+            }
+            picture:last-child{
+                height: 10vh;
+                display: flex;
+                img{
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
     &--top{
         margin-top: 2.5rem;
     }
@@ -37,6 +73,19 @@
                 div{
                     width: 3rem;
                     height: 4.5rem;
+                }
+            }
+        }
+        &--logos{
+            .logos{
+                padding-top: 1rem !important;
+                picture:first-child{
+                    padding-right: 1.5rem;
+                    margin-right: 1.5rem;
+                    height: 3rem;
+                }
+                picture:last-child{
+                    height: 5.5rem;
                 }
             }
         }

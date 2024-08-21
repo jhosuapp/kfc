@@ -47,7 +47,7 @@
                     }
                 }
             }
-            &.current_page_item{
+            &.current-menu-item{
                 a{
                     color: fun.color('white');
                     background: fun.color('linear');
@@ -57,7 +57,7 @@
     }
 }
 
-@media(max-width: fun.breakpoints('ipad-big')){
+@media(max-width: fun.breakpoints('laptop-small')){
     .header {
         display: flex;
         justify-content: flex-end;
@@ -103,7 +103,7 @@
             ul{
                 flex-direction: column;
                 li{
-                    &.current_page_item{
+                    &.current-menu-item{
                         a{
                             color: fun.color('white');
                             background: fun.color('primary');

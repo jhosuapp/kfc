@@ -21,6 +21,9 @@
                 text-decoration: underline;
                 cursor: pointer;
             }
+            a{
+                text-decoration: underline;
+            }
         }
         &--file{
             margin-top: 3rem;
@@ -36,6 +39,15 @@
                     overflow: hidden;
                     color: fun.color('black');
                     transition: .5s ease all;
+                    margin-right: 20px;
+                }
+                &:hover{
+                    span{
+                        color: fun.color('white');
+                    }
+                }
+                img{
+                    margin-left: 20px;
                 }
             }
             #file-loaded{
@@ -46,11 +58,6 @@
             img{
                 width: 2vw;
                 margin-right: 1rem;
-            }
-            &:hover{
-                span{
-                    color: fun.color('white');
-                }
             }
         }
         &--submit{

@@ -6,14 +6,17 @@ Template Name: HOME
 
 <?php get_header('wordpress'); ?>
 
-<section class="container container--top container--lines kfc-hero">
-    <!-- Lines top -->
-    <article class="lines">
-        <div></div>
-        <div></div>
-        <div></div>
+<section class="container container--top container--logos kfc-hero">
+    <!-- logos top -->
+    <article class="logos">
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/kfc.svg" alt="kfc">
+        </picture>
+        <picture>
+            <img src="<?php echo get_template_directory_uri(); ?>/images/pepsi.png" alt="pepsi">
+        </picture>
     </article>
-    <!-- End lines top -->
+    <!-- End logos top -->
     <article class="kfc-hero__content">
          <div class="coronel custom-fonts">
             <picture>
