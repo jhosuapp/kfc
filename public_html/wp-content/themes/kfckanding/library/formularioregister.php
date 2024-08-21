@@ -237,12 +237,7 @@ function red_add_new_user() {
 
         // Crear el usuario en WordPress GPT
         //$user_id = wp_create_user($user_login, $user_pass, $user_email);
-        // Añadir metadatos adicionales al usuario
-        update_user_meta($user_id, 'first_name', $user_first);
-
-        update_user_meta($user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
-        update_user_meta($user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
-        //--------
+        
 
         // Subir la imagen
         require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -265,7 +260,7 @@ function red_add_new_user() {
         global $wpdb;
         $tabla = $wpdb->prefix . 'codigo_registrado';  // Usa la tabla que ya creaste
 
-         $new_user_id = wp_insert_user(array(
+        $new_user_id = wp_insert_user(array(
                  'user_login'		=> $user_login,
                  'user_pass'	 		=> $user_pass,
                  'user_email'		=> $user_email,
@@ -274,12 +269,18 @@ function red_add_new_user() {
                  'role'				=> $role
              )
          );
-         if($new_user_id) {
-             wp_new_user_notification($new_user_id);              
-             wp_set_auth_cookie(get_user_by( 'email', $user_email )->ID, true);
-             wp_set_current_user($new_user_id, $user_login);
-             do_action('wp_login', $user_login, wp_get_current_user());
-             $wpdb->insert(
+         // Añadir metadatos adicionales al usuario
+        update_user_meta($new_user_id, 'first_name', $user_first);
+
+        update_user_meta($new_user_id, 'userdocu', sanitize_text_field($_POST['userdocu']));
+        update_user_meta($new_user_id, 'usercelular', sanitize_text_field($_POST['usercelular']));
+        //--------
+        if($new_user_id) {
+            wp_new_user_notification($new_user_id);              
+            wp_set_auth_cookie(get_user_by( 'email', $user_email )->ID, true);
+            wp_set_current_user($new_user_id, $user_login);
+            do_action('wp_login', $user_login, wp_get_current_user());
+            $wpdb->insert(
                 $tabla,
                 array(
                     'user_id' => $new_user_id,
@@ -287,7 +288,7 @@ function red_add_new_user() {
                     'textcodigo' => $texcodigo,
                     'puntaje' => $puntaje
                 )
-            );
+        );
             //sleep(5);
             wp_redirect(home_url()); exit;
          }
