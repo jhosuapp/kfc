@@ -155,7 +155,7 @@ function red_registration_fields($reg_form_role) {	?>
                 <label class="national uppercase" for="terms">
                     <input type="checkbox" id="terms" name="terms">
                     <div class="national">
-                        Aplican Términos y condiciones. Consúltalos en: <a class="national" target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones"> https://www.infokfc.com/promos-colombia-terminos-y-condiciones</a>
+                        Aplican Términos y condiciones. Consúltalos en: <a class="national" target="_blank" href="https://www.infokfc.com/promos-colombia-terminos-y-condiciones"> https://www.infokfc.com/promos-colombia/terminos-y-condiciones</a>
                     </div>
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
@@ -163,7 +163,7 @@ function red_registration_fields($reg_form_role) {	?>
             <div class="block block--terms">
                 <label class="national uppercase" for="policies">
                     <input type="checkbox" id="policies" name="policies">
-                    Autorizo a KFC Colombia el tratamiento de datos personalos según las políticas de habeas data
+                    Autorizo a KFC Colombia el <a class="national" target="_blank" href="https://www.infokfc.com/terms/colombia-politica-de-tratamientos-de-datos-personales">tratamiento de datos personales</a> según las políticas de habeas data
                 </label>
                 <p class="msg-error">Marque la casilla de autorización</p>
             </div>
@@ -215,6 +215,7 @@ function red_add_new_user() {
 
      $errors = red_errors()->get_error_messages();    
      if(empty($errors)) { 
+            
 
         // Crear el usuario en WordPress GPT
         //$user_id = wp_create_user($user_login, $user_pass, $user_email);
@@ -268,14 +269,18 @@ function red_add_new_user() {
                     'textcodigo' => $texcodigo,
                     'puntaje' => $puntaje
                 )
-            );            
-             wp_redirect(home_url()); exit;
+            );
+            sleep(5);
+            wp_redirect(home_url()); exit;
          }
          
      } 
  }
 }
 add_action('init', 'red_add_new_user');
+function message_modal(){
+    
+}
 function red_errors(){
    static $wp_error; 
    return isset($wp_error) ? $wp_error : ($wp_error = new WP_Error(null, null, null));

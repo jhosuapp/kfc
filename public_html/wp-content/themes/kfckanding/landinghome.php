@@ -95,8 +95,9 @@ Template Name: landinghomen
                 Más probablidades<br> tienes de ganar
             </h3>
         </div>
-        <?php echo do_shortcode('[register]'); ?>
-        <!-- jhosss --
+        <?php echo do_shortcode('[register]'); ?> 
+        
+         <!-- jhosss --
         <form class="form form-general" action="">
             <div class="block">
                 <label class="frenteNacionalregular" for="#">Nombre completo</label>
